@@ -1,0 +1,35 @@
+@mixin mqsm {
+   @media screen and (max-width: map-get($breakpoints, 'sm')) {
+      @content;
+   }
+}
+
+@mixin mqmd {
+   @media screen and (max-width: map-get($breakpoints, 'md')) {
+      @content;
+   }
+}
+
+@mixin mqlg {
+   @media screen and (max-width: map-get($breakpoints, 'lg')) {
+      @content;
+   }
+}
+
+@mixin mqxl {
+   @media screen and (max-width: map-get($breakpoints, 'xl')) {
+      @content;
+   }
+}
+
+@mixin mq2xl {
+   @media screen and (max-width: map-get($breakpoints, '2xl')) {
+      @content;
+   }
+}
+
+@mixin mq3xl {
+   @media screen and (max-width: map-get($breakpoints, '3xl')) {
+      @content;
+   }
+}

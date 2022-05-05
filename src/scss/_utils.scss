@@ -1,0 +1,11 @@
+@mixin aspectRatios($map: $aspectRatios, $ratius) {
+    @if ($enableClasses ==true) {
+        @each $ratio in $map {
+            .ratio-#{$ratio} {
+                aspect-ratio: #{$ratio};
+            }
+        }
+    } @else {
+        aspect-ratio: #{$ratius};
+    }
+}

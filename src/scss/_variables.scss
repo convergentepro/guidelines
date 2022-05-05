@@ -1,268 +1,252 @@
+// SETTINGS VARIABLES:
 $enableClasses: true !default;
+$fontSizeBase: 10px !default;
+$lineHeightBase: 1.55 !default;
+$radiusBase: 8px !default;
 
-
-
-// Blue Tones: 100-500
+//----------------------------------------------------------------
+// ? THEMES: BGCOLOR, TEXTCOLOR, BORDERS, etc.
 $blue-100: hsl(245, 80%, 88%);
 $blue-200: hsl(245, 80%, 68%);
 $blue-300: hsl(245, 80%, 48%);
 $blue-400: hsl(245, 80%, 28%);
 $blue-500: hsl(245, 80%, 18%);
-
-// Green Tones: 100-500
 $green-100: hsl(135, 70%, 85%);
 $green-200: hsl(135, 70%, 65%);
 $green-300: hsl(135, 70%, 45%);
 $green-400: hsl(135, 70%, 25%);
 $green-500: hsl(135, 70%, 15%);
-
 $apricot-100: hsl(25, 80%, 88%);
 $apricot-200: hsl(25, 80%, 68%);
 $apricot-300: hsl(25, 80%, 48%);
 $apricot-400: hsl(25, 80%, 28%);
 $apricot-500: hsl(25, 80%, 18%);
-
 $crimson-100: hsl(355, 85%, 88%);
 $crimson-200: hsl(355, 85%, 68%);
 $crimson-300: hsl(355, 85%, 48%);
 $crimson-400: hsl(355, 85%, 28%);
 $crimson-500: hsl(355, 85%, 18%);
-
 $golden-100: hsl(50, 80%, 88%);
 $golden-200: hsl(50, 80%, 68%);
 $golden-300: hsl(50, 80%, 48%);
 $golden-400: hsl(50, 80%, 28%);
 $golden-500: hsl(50, 80%, 18%);
-
 $indigo-100: hsl(265, 80%, 88%);
 $indigo-200: hsl(265, 80%, 68%);
 $indigo-300: hsl(265, 80%, 48%);
 $indigo-400: hsl(265, 80%, 28%);
 $indigo-500: hsl(265, 80%, 18%);
-
-// Brand Neutral Colors
-$whitesmoke: hsl(0, 0%, 95%);
 $gray-100: hsl(0, 0%, 88%);
 $gray-200: hsl(0, 0%, 68%);
 $gray-300: hsl(0, 0%, 48%);
 $gray-400: hsl(0, 0%, 28%);
 $gray-500: hsl(0, 0%, 18%);
-$charcoal: hsl(0, 0%, 10%);
+$white: hsl(0, 0%, 95%);
+$black: hsl(0, 0%, 10%);
 
-// Brand Colors - Array Map
-$brand-colors: (
-	'blue-100': hsl(245, 80%, 88%),
-	'blue-200': hsl(245, 80%, 68%),
-	'blue-300': hsl(245, 80%, 48%),
-	'blue-400': hsl(245, 80%, 28%),
-	'blue-500': hsl(245, 80%, 18%),
-	'green-100': hsl(135, 70%, 88%),
-	'green-200': hsl(135, 70%, 68%),
-	'green-300': hsl(135, 70%, 48%),
-	'green-400': hsl(135, 70%, 28%),
-	'green-500': hsl(135, 70%, 18%),
-	'apricot-100': hsl(25, 80%, 88%),
-	'apricot-200': hsl(25, 80%, 68%),
-	'apricot-300': hsl(25, 80%, 48%),
-	'apricot-400': hsl(25, 80%, 28%),
-	'apricot-500': hsl(25, 80%, 18%),
-	'crimson-100': hsl(355, 85%, 88%),
-	'crimson-200': hsl(355, 85%, 68%),
-	'crimson-300': hsl(355, 85%, 48%),
-	'crimson-400': hsl(355, 85%, 28%),
-	'crimson-500': hsl(355, 85%, 18%),
-	'golden-100': hsl(50, 80%, 88%),
-	'golden-200': hsl(50, 80%, 68%),
-	'golden-300': hsl(50, 80%, 48%),
-	'golden-400': hsl(50, 80%, 28%),
-	'golden-500': hsl(50, 80%, 18%),
-	'indigo-100': hsl(265, 80%, 88%),
-	'indigo-200': hsl(265, 80%, 68%),
-	'indigo-300': hsl(265, 80%, 48%),
-	'indigo-400': hsl(265, 80%, 28%),
-	'indigo-500': hsl(265, 80%, 18%),
-	'whitesmoke': hsl(0, 0%, 95%),
-	'gray-100': hsl(0, 0%, 88%),
-	'gray-200': hsl(0, 0%, 68%),
-	'gray-300': hsl(0, 0%, 48%),
-	'gray-400': hsl(0, 0%, 28%),
-	'gray-500': hsl(0, 0%, 18%),
-	'charcoal': hsl(0, 0%, 10%),
+// THEME: COLORS MAP:
+$brandColors: (
+    'blue-100': $blue-100,
+    'blue-200': $blue-200,
+    'blue-300': $blue-300,
+    'blue-400': $blue-400,
+    'blue-500': $blue-500,
+    'green-100': $green-100,
+    'green-200': $green-200,
+    'green-300': $green-300,
+    'green-400': $green-400,
+    'green-500': $green-500,
+    'apricot-100': $apricot-100,
+    'apricot-200': $apricot-200,
+    'apricot-300': $apricot-300,
+    'apricot-400': $apricot-400,
+    'apricot-500': $apricot-500,
+    'crimson-100': $crimson-100,
+    'crimson-200': $crimson-200,
+    'crimson-300': $crimson-300,
+    'crimson-400': $crimson-400,
+    'crimson-500': $crimson-500,
+    'golden-100': $golden-100,
+    'golden-200': $golden-200,
+    'golden-300': $golden-300,
+    'golden-400': $golden-400,
+    'golden-500': $golden-500,
+    'indigo-100': $indigo-100,
+    'indigo-200': $indigo-200,
+    'indigo-300': $indigo-300,
+    'indigo-400': $indigo-400,
+    'indigo-500': $indigo-500,
+    'gray-100': $gray-100,
+    'gray-200': $gray-200,
+    'gray-300': $gray-300,
+    'gray-400': $gray-400,
+    'gray-500': $gray-500,
+    'white': $white,
+    'black': $black,
 );
 
-// Media Queries Breakpoints
+$borderStyles: (
+    none,
+    hidden,
+    dotted,
+    dashed,
+    solid,
+    groove,
+    ridge,
+    inset,
+    outset
+);
+
+//----------------------------------------------------------------
+// ? LAYOUT: Breakpoints, Display, Flexbox, Grid, etc.
+
+// MQ Breakpoints:
 $breakpoints: (
-	'sm': 480px,
-	'md': 640px,
-	'lg': 768px,
-	'xl': 1024px,
-	'2xl': 1280px,
-	'3xl': 1400px,
+    'sm': 480px,
+    'md': 640px,
+    'lg': 768px,
+    'xl': 1024px,
+    '2xl': 1280px,
+    '3xl': 1400px,
 );
 
-// Border Widths:
-$border-width-map: (
-	'thin': thin,
-	'thick': thick,
-	'medium': medium,
+// DISPLAYS:
+$displays: (inline, inline-block, block, inline-flex, flex, grid, table, none);
+
+// FLEXBOX VARIABLES:
+$flexAlignItems: (
+    'start': flex-start,
+    'end': flex-end,
+    'center': center,
+    'baseline': baseline,
+    'stretch': stretch,
 );
 
-$border-style-map: (
-	'none': none,
-	// 'hidden': hidden,
-	'dotted': dotted,
-	'dashed': dashed,
-	'solid': solid,
-	'double': double,
-	'groove': groove,
-	'ridge': ridge,
-	'inset': inset,
-	'outset': outset,
+$flexJustifyContents: (
+    'Start': flex-start,
+    'End': flex-end,
+    'Center': center,
+    'Around': space-around,
+    'Between': space-between,
+    'Evenly': space-evenly,
 );
 
-//----------------------------------------------------------------
-// TYPOGRAPHY GLOBAL VARIABLES:
-$fs-base: 10px !default;
-$font-weight-text: (lighter, light, normal, bold, bolder);
-$font-weight-values: (100, 200, 300, 400, 500, 600, 700, 800, 900);
-$lineheight-base: 1.125 !default;
-$ffamily-map: (
-	'display': '"Jost", sans-serif',
-	'monocode': ' "Source Code Pro", monospace',
-);
-$fsizes-map: (
-	'none': 0,
-	'xs': 0.8rem,
-	'base': 1rem,
-	'sm': 1.2rem,
-	'md': 1.6rem,
-	'lg': 2rem,
-	'xl': 2.4rem,
-	'2xl': 3rem,
-	'3xl': 3.6rem,
-	'4xl': 4.8rem,
-	'5xl': 6rem,
-	'6xl': 7.2rem,
-	'7xl': 9.6rem,
-	'8xl': 12.8rem,
-);
-$line-height-map: (
-	'none': 0,
-	'xs': 0.8rem,
-	'base': 1rem,
-	'sm': 1.55rem,
-	'md': 2rem,
-	'lg': 2.8rem,
-	'xl': 3.6rem,
-	'2xl': 4.8rem,
-	'3xl': 6rem,
-	'4xl': 7.2rem,
-	'5xl': 8.4rem,
-	'6xl': 9.6rem,
-	'7xl': 12.8rem,
-	'8xl': 15rem,
-);
-$list-style-map: (
-	circle,
-	decimal,
-	decimal-leading-zero,
-	upper-alpha,
-	lower-alpha,
-	upper-roman,
-	lower-roman,
-	square,
-	none
+$flexWrapper: (
+    'wrap': wrap,
+    'nowrap': nowrap,
+    'wrapReverse': wrap-reverse,
 );
 
-$talign-map: (left, right, center, justify, unset);
-$tdecoration-map: (none, underline, overline, line-through);
-$ttransform-map: (none, uppercase, lowercase, capitalize);
+// POSITIONS:
+$positions: (relative, absolute, sticky, fixed, static);
+
+$zIndexes: (0, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 9999);
 
 //----------------------------------------------------------------
-// FLEXBOX GLOBAL VARIABLES
-$flex-alignItems: (
-	'start': flex-start,
-	'end': flex-end,
-	'center': center,
-	'baseline': baseline,
-	'stretch': stretch,
+// ? TYPOGRAPHY: Fonts, Font-Sizes, Line-Heights, etc...
+$fontFamily: (
+    'display': '"Jost", sans-serif',
+    'serif': '"Times New Roman", serif',
+    'monocode': ' "Source Code Pro", monospace',
+);
+$fontSizes: (
+    'none': 0,
+    'xs': 0.8rem,
+    'base': 1rem,
+    'sm': 1.2rem,
+    'md': 1.6rem,
+    'lg': 2rem,
+    'xl': 2.4rem,
+    '2xl': 3rem,
+    '3xl': 3.6rem,
+    '4xl': 4.8rem,
+    '5xl': 6rem,
+    '6xl': 7.2rem,
+    '7xl': 9.6rem,
+    '8xl': 12.8rem,
+);
+$fontWeights: (100, 200, 300, 400, 500, 600, 700, 800, 900);
+
+// LINE HEIGHTS:
+$lineHeights: (
+    0.5,
+    0.75,
+    1,
+    1.33,
+    1.44,
+    1.55,
+    1.618,
+    1.77,
+    2,
+    2.25,
+    2.5,
+    2.75,
+    3
+);
+$listStyles: (
+    circle,
+    decimal,
+    decimal-leading-zero,
+    upper-alpha,
+    lower-alpha,
+    upper-roman,
+    lower-roman,
+    square,
+    none
 );
 
-$flex-justifyContent: (
-	'Start': flex-start,
-	'End': flex-end,
-	'Center': center,
-	'Around': space-around,
-	'Between': space-between,
-	'Evenly': space-evenly,
-);
-
-$flex-wrapper: (
-	'wrap': wrap,
-	'nowrap': nowrap,
-	'wrapReverse': wrap-reverse,
-);
-
-//----------------------------------------------------------------
-// LAYOUT GLOBAL VARIABLES
-$border-radius-base: 8px;
-$position-map: (relative, absolute, sticky, fixed, static);
-$scroll-beh-map: (auto, smooth);
-$boxDisplays-map: (
-	inline,
-	inline-block,
-	block,
-	inline-flex,
-	flex,
-	grid,
-	table,
-	none
-);
-$aspectRatio-map: (
-	'1-1': '1/1',
-	'16-9': '16/9',
-	'9-16': '9/16',
-	'2-3': '2/3',
-	'3-2': '3/2',
-	'4-3': '4/3',
-	'3-4': '3/4',
-	'5-4': '5/4',
-	'4-5': '4/5',
-);
-
-$radius-map: (
-	'none': 0,
-	'xs': 0.8rem,
-	'base': 1rem,
-	'sm': 1.2rem,
-	'md': 1.6rem,
-	'lg': 2rem,
-	'xl': 2.4rem,
-	'2xl': 2.8rem,
-	'4xl': 3.2rem,
-	'5xl': 4.8rem,
-	'6xl': 6.4rem,
-	'circle': 50%,
-	'full': 100%,
-);
-
-$zindex-map: (0, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 9999);
+// TEXTS VARIABLES:
+$textAlignments: (left, right, center, justify, unset);
+$textDecorations: (none, underline, overline, line-through);
+$textTransforms: (none, uppercase, lowercase, capitalize);
 
 //----------------------------------------------------------------
-// EFFECTS AND DECORATION GLOBAL VARIABLES:
-$cursor-map: (
-	none,
-	unset,
-	auto,
-	pointer,
-	copy,
-	not-allowed,
-	progress,
-	help,
-	zoom-in,
-	zoom-out
+// ? UTILITIES: Border Radius, Opacity, Overflows, Shadows, etc...
+$aspectRatios: (
+    '1-1': '1/1',
+    '16-9': '16/9',
+    '9-16': '9/16',
+    '2-3': '2/3',
+    '3-2': '3/2',
+    '4-3': '4/3',
+    '3-4': '3/4',
+    '5-4': '5/4',
+    '4-5': '4/5',
 );
-$objFit-map: (auto, cover, contain, unset);
-$resize-map: (vertical, horizontal, both, unset);
+
+$cursors: (
+    none,
+    unset,
+    auto,
+    pointer,
+    copy,
+    not-allowed,
+    progress,
+    help,
+    zoom-in,
+    zoom-out
+);
+
+$objectFitting: (auto, cover, contain, unset);
+
+$resizeInputs: (vertical, horizontal, both, unset);
+
 $overflow-map: (visible, hidden, scroll, auto, clip, unset);
 $visibility-map: (visible, hidden, collapse, unset);
+
+// Border Radius:
+$radiusBorder: (
+    'none': 0,
+    'xs': 0.8rem,
+    'base': 1rem,
+    'sm': 1.2rem,
+    'md': 1.6rem,
+    'lg': 2rem,
+    'xl': 2.4rem,
+    '2xl': 2.8rem,
+    '4xl': 3.2rem,
+    '5xl': 4.8rem,
+    '6xl': 6.4rem,
+    'circle': 50%,
+    'full': 100%,
+);

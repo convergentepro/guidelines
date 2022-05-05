@@ -1,6 +1,6 @@
 {
     "tabWidth": 4,
-    "arrowParens": "always",
     "singleQuote": true,
-    "trailingComma": "all"
+    "formatOnSave": true,
+    "bracketSpacing": false
 }
