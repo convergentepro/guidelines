@@ -7,7 +7,7 @@
     "build": "webpack build --progress --mode=production -c webpack.config.js",
     "dev": "webpack serve --progress --mode=development -c webpack.config.js",
     "start": "nodemon -e=scss,css,html,js,ts,json,hbs,mjs,mts src/index.js",
-    "sass": "sass -w src/scss/index.scss:public/static/app.css"
+    "sass": "sass --watch src/scss/index.scss public/static/app.css"
   },
   "repository": {
     "type": "git",
