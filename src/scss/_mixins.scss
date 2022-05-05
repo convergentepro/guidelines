@@ -37,9 +37,13 @@
     }
 }
 
-//----------------------------------------------------------------
-// ? LAYOUTS: Spacer, Flexbox, Gridbox, Displaying, Positioning...
-//----------------------------------------------------------------
+@mixin createThemeColorProps($bkgColor, $textColor) {
+    $map: $brandColors;
+    @if ($enableClasses ==true) {
+        background-color: map-get($map, #{$bkgColor});
+        color: map-get($map, #{$textColor});
+    }
+}
 @mixin createDisplays($map: $displays, $setDisplay) {
     @if ($enableClasses==true) {
         @each $display in $map {
@@ -49,10 +53,6 @@
         }
     }
 }
-
-@include createDisplays($displays, '');
-
-// Positioning coordinates:
 @mixin createPositions($map: $positions) {
     @if ($enableClasses==true) {
         @each $k in $map {
@@ -62,20 +62,7 @@
         }
     }
 }
-@include createPositions($positions);
-
-//----------------------------------------------------------------
-// ? THEMES: BkgColor, TextColor, Borders, etc.
-//----------------------------------------------------------------
-@mixin createThemeColorProps($bkgColor, $textColor) {
-    $map: $brandColors;
-    @if ($enableClasses ==true) {
-        background-color: map-get($map, #{$bkgColor});
-        color: map-get($map, #{$textColor});
-    }
-}
-
-@mixin createThemeBkgColor($map: $brandColors, $setBkgColor) {
+@mixin createThemeBkgColors($map: $brandColors, $setBkgColor) {
     @if ($enableClasses==true) {
         @each $k, $v in $map {
             .bg-#{$k} {
@@ -134,8 +121,7 @@
         background-color: map-get($map, #{$setBkgColor});
     }
 }
-
-@mixin createThemeTextColor($map: $brandColors, $setTextColor) {
+@mixin createThemeTextColors($map: $brandColors, $setTextColor) {
     @if ($enableClasses==true) {
         @each $k, $v in $map {
             .text-#{$k} {
@@ -192,5 +178,183 @@
         }
     } @else {
         color: map-get($map, #{$setTextColor});
+    }
+}
+@mixin createThemeBorderColors($map: $brandColors, $setBorderColor) {
+    @if ($enableClasses==true) {
+        @each $k, $v in $map {
+            .border-#{$k} {
+                border-color: map-get($map, #{$k});
+            }
+        }
+
+        @include mqsm {
+            @each $k, $v in $map {
+                .sm_border-#{$k} {
+                    border-color: map-get($map, #{$k});
+                }
+            }
+        }
+
+        @include mqmd {
+            @each $k, $v in $map {
+                .md_border-#{$k} {
+                    border-color: map-get($map, #{$k});
+                }
+            }
+        }
+
+        @include mqlg {
+            @each $k, $v in $map {
+                .lg_border-#{$k} {
+                    border-color: map-get($map, #{$k});
+                }
+            }
+        }
+
+        @include mqxl {
+            @each $k, $v in $map {
+                .xl_border-#{$k} {
+                    border-color: map-get($map, #{$k});
+                }
+            }
+        }
+
+        @include mq2xl {
+            @each $k, $v in $map {
+                .xxl_border-#{$k} {
+                    border-color: map-get($map, #{$k});
+                }
+            }
+        }
+
+        @include mq3xl {
+            @each $k, $v in $map {
+                .xxxl_border-#{$k} {
+                    border-color: map-get($map, #{$k});
+                }
+            }
+        }
+    } @else {
+        border-color: map-get($map, #{$setBorderColor});
+    }
+}
+@mixin createBorderWidths($endCounter, $setBorderWidth) {
+    @if ($enableClasses == true) {
+        @for $i from 0 through $endCounter {
+            .border-#{$i} {
+                border-width: #{$i * 1px};
+            }
+        }
+
+        @include mqsm {
+            @for $i from 0 through $endCounter {
+                .sm_border-#{$i} {
+                    border-width: #{$i * 1px};
+                }
+            }
+        }
+
+        @include mqmd {
+            @for $i from 0 through $endCounter {
+                .md_border-#{$i} {
+                    border-width: #{$i * 1px};
+                }
+            }
+        }
+
+        @include mqlg {
+            @for $i from 0 through $endCounter {
+                .lg_border-#{$i} {
+                    border-width: #{$i * 1px};
+                }
+            }
+        }
+
+        @include mqxl {
+            @for $i from 0 through $endCounter {
+                .xl_border-#{$i} {
+                    border-width: #{$i * 1px};
+                }
+            }
+        }
+
+        @include mq2xl {
+            @for $i from 0 through $endCounter {
+                .xxl_border-#{$i} {
+                    border-width: #{$i * 1px};
+                }
+            }
+        }
+
+        @include mq3xl {
+            @for $i from 0 through $endCounter {
+                .xxxl_border-#{$i} {
+                    border-width: #{$i * 1px};
+                }
+            }
+        }
+    }
+}
+
+//----------------------------------------------------------------
+// TYPOGRAPHY: FONT SIZES
+@mixin createFontsizes($map: $fontSizes, $setFontsize) {
+    @if ($enableClasses == true) {
+        @each $k, $v in $map {
+            .fs-#{$k} {
+                font-size: map-get($map, #{$k});
+            }
+        }
+
+        @include mqsm {
+            @each $k, $v in $map {
+                .sm_fs-#{$k} {
+                    font-size: map-get($map, #{$k});
+                }
+            }
+        }
+
+        @include mqmd {
+            @each $k, $v in $map {
+                .md_fs-#{$k} {
+                    font-size: map-get($map, #{$k});
+                }
+            }
+        }
+
+        @include mqlg {
+            @each $k, $v in $map {
+                .lg_fs-#{$k} {
+                    font-size: map-get($map, #{$k});
+                }
+            }
+        }
+
+        @include mqxl {
+            @each $k, $v in $map {
+                .xl_fs-#{$k} {
+                    font-size: map-get($map, #{$k});
+                }
+            }
+        }
+
+        @include mq2xl {
+            @each $k, $v in $map {
+                .xxl_fs-#{$k} {
+                    font-size: map-get($map, #{$k});
+                }
+            }
+        }
+
+        @include mq3xl {
+            @each $k, $v in $map {
+                .x2l_fs-#{$k} {
+                    font-size: map-get($map, #{$k});
+                }
+            }
+        }
+    } @else {
+        font-size: map-get($map, #{$setFontsize});
     }
 }
