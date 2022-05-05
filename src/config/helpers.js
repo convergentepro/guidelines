@@ -1,15 +1,13 @@
-"use strict";
-exports.__esModule = true;
-exports.CONLOG = exports.DIRNAME = void 0;
-var path_1 = require("path");
-// FUNCTIONS HELPERS:
+import path from 'path';
+
 // * DIRNAME shorthand helper function:
-function DIRNAME(path) {
-    return (0, path_1.join)(__dirname, "".concat(path));
+function DIRNAME(routePath = '') {
+    path.join(__dirname, `${routePath}`);
 }
-exports.DIRNAME = DIRNAME;
+
 // * Console.log shorthand helper function:
-function CONLOG(params) {
-    return console.log(params);
+function CONLOG(...params) {
+    return console.log(...params);
 }
-exports.CONLOG = CONLOG;
+
+export { DIRNAME, CONLOG };

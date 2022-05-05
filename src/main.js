@@ -1,4 +1,5 @@
 // FUNCTIONS HELPERS:
 import { CONLOG, DIRNAME } from './config/helpers';
+import './scss/index.scss';
 
-CONLOG('Public Directory path: => ' + DIRNAME('./../../public'));
+CONLOG('PUBLIC PATH' + DIRNAME('/public'));

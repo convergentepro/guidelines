@@ -4,8 +4,8 @@
   "description": "Guidelines branding of My professional Trade Mark - Convergente Productions Media Studios",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack build --progress --mode=production -c webpack.config.js",
-    "dev": "webpack serve --progress --mode=development -c webpack.config.js",
+    "build": "vite build --config vite.config.js",
+    "dev": "vite serve --config vite.config.js",
     "start": "nodemon -e=scss,css,html,js,ts,json,hbs,mjs,mts src/index.js",
     "sass": "sass --watch --style=compressed src/scss/index.scss public/static/app.css"
   },
@@ -48,5 +48,6 @@
     "sass": "^1.51.0",
     "typescript": "^4.6.4",
     "vite": "^2.9.8"
-  }
+  },
+  "type": "module"
 }
