@@ -1,8 +1,8 @@
 const {parallel, src, dest, series} = require('gulp');
 const autoprefixer = require('autoprefixer');
 const babel = require('gulp-babel');
-const bsync = require('browser-sync')(create());
-const cacheBust = require('gulp-cache-bust');
+// const bsync = require('browser-sync')(create());
+// const cacheBust = require('gulp-cache-bust');
 const concat = require('gulp-concat');
 const cssnano = require('cssnano');
 const imagemin = require('gulp-imagemin');
@@ -12,13 +12,7 @@ const postcss = require('gulp-postcss');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 
-const {
-    CONLOG,
-    DIRNAME,
-    NODE_PORT,
-    NODE_ENV,
-    NODE_HOST,
-} = require('./src/config/');
+const {CONLOG, DIRNAME} = require('./src/config/');
 
 // VARIABLES LOCALS:
 const resolve = {
@@ -36,6 +30,8 @@ const resolve = {
 };
 
 const {css, cssbulk, js, jsbulk, images, public, assetsPublic} = resolve.alias;
+
+function compileSass() {}
 
 // function buildStyles() {
 //     return src(`${entryDirectory}scss/**/${extensions[0]}`)
