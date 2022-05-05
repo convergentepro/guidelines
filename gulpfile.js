@@ -21,7 +21,21 @@ const {
 } = require('./src/config/');
 
 // VARIABLES LOCALS:
-const PATHS = {};
+const resolve = {
+    alias: {
+        css: DIRNAME('/src/scss/index.scss'),
+        cssbulk: DIRNAME('/src/scss/**/*.css'),
+        js: DIRNAME('/src/index.js'),
+        jsbulk: DIRNAME('/src/**/*.js'),
+        images: DIRNAME('/src/img/**/*'),
+        public: DIRNAME('/public'),
+        assetsPublic: DIRNAME('/public/assets'),
+    },
+
+    extensions: ['.js', '.ts', '.hbs', '.html', '.md', '*', '.scss', '.css'],
+};
+
+const {css, cssbulk, js, jsbulk, images, public, assetsPublic} = resolve.alias;
 
 // function buildStyles() {
 //     return src(`${entryDirectory}scss/**/${extensions[0]}`)
