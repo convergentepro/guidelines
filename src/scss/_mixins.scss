@@ -1,0 +1,128 @@
+//----------------------------------------------------------------
+// ? BREAKPOINTS
+//----------------------------------------------------------------
+@mixin mqsm {
+    @media screen and (min-width: map-get($breakpoints, 'sm')) {
+        @content;
+    }
+}
+
+@mixin mqmd {
+    @media screen and (min-width: map-get($breakpoints, 'md')) {
+        @content;
+    }
+}
+
+@mixin mqlg {
+    @media screen and (min-width: map-get($breakpoints, 'lg')) {
+        @content;
+    }
+}
+
+@mixin mqxl {
+    @media screen and (min-width: map-get($breakpoints, 'xl')) {
+        @content;
+    }
+}
+
+@mixin mq2xl {
+    @media screen and (min-width: map-get($breakpoints, '2xl')) {
+        @content;
+    }
+}
+
+@mixin mq3xl {
+    @media screen and (min-width: map-get($breakpoints, '3xl')) {
+        @content;
+    }
+}
+
+@mixin createAspectRatio($map: $aspectRatio-map) {
+    @each $ratio, $v in $map {
+        .ratio-#{$ratio} {
+            aspect-ratio: #{$v};
+        }
+    }
+}
+
+// Create Displays Classes with Maps:
+@mixin createDisplays($map: $boxDisplays) {
+    @if ($enableClasses == true) {
+        @each $display in $map {
+            .d-#{$display} {
+                display: #{$display};
+            }
+        }
+    }
+}
+
+// Positioning coordinates:
+@mixin createPositions($map: $position-map) {
+    @if ($enable-classes == true) {
+        @each $k in $map {
+            .pos-#{$k} {
+                position: #{$k};
+            }
+        }
+    }
+}
+
+// Create Theme BKG Colors with Breakpoints: xs, sm, md, lg, xl, 2xl
+@mixin createThemeBkgColor() {
+    @if ($enableClasses == true) {
+        @each $k, $v in $brand-colors {
+            .bg-#{$k} {
+                background-color: map-get($brand-colors, #{$k});
+            }
+        }
+        @include mqsm {
+            @each $k, $v in $brand-colors {
+                .sm_bg-#{$k} {
+                    background-color: map-get($brand-colors, #{$k});
+                }
+            }
+        }
+        @include mqmd {
+            @each $k, $v in $brand-colors {
+                .md_bg-#{$k} {
+                    background-color: map-get($brand-colors, #{$k});
+                }
+            }
+        }
+
+        @include mqlg {
+            @each $k, $v in $brand-colors {
+                .lg_bg-#{$k} {
+                    background-color: map-get($brand-colors, #{$k});
+                }
+            }
+        }
+
+            @include mqxl {
+                @each $k, $v in $brand-colors {
+                    .xl_bg-#{$k} {
+                        background-color: map-get($brand-colors, #{$k});
+                    }
+                }
+            }
+ 
+
+            @include mq2xl {
+                @each $k, $v in $brand-colors {
+                    .xxl_bg-#{$k} {
+                        background-color: map-get($brand-colors, #{$k});
+                    }
+                }
+            }
+
+            @include mq3xl {
+                @each $k, $v in $brand-colors {
+                    .xxxl_bg-#{$k} {
+                        background-color: map-get($brand-colors, #{$k});
+                    }
+                }
+            }
+
+
+    }
+}
