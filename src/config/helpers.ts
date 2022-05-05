@@ -8,8 +8,8 @@ function DIRNAME(path: string) {
 }
 
 // * Console.log shorthand helper function:
-function CONLOG(params: unknown) {
-	return console.log(params);
+function CONLOG(...params: any[]) {
+    return console.log(...params);
 }
 
 export { DIRNAME, CONLOG };
