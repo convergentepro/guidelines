@@ -1,82 +1,118 @@
-const {parallel, src, dest, series} = require('gulp');
-const autoprefixer = require('autoprefixer');
-const babel = require('gulp-babel');
-// const bsync = require('browser-sync')(create());
-// const cacheBust = require('gulp-cache-bust');
-const concat = require('gulp-concat');
-const cssnano = require('cssnano');
+// @ts-ignore
+const {src, dest, watch, series, parallel} = require('gulp');
+const prefix = require('gulp-autoprefixer');
+const minify = require('gulp-clean-css');
+const terser = require('gulp-terser');
 const imagemin = require('gulp-imagemin');
-const notifier = require('gulp-notifier');
-const plumber = require('gulp-plumber');
-const postcss = require('gulp-postcss');
+const imagewebp = require('gulp-webp');
+// const dartSass = require('sass');
+// const gsass = require('gulp-sass');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 
-const {CONLOG, DIRNAME} = require('./src/config/');
-
-// VARIABLES LOCALS:
-const resolve = {
-    alias: {
-        css: DIRNAME('/src/scss/index.scss'),
-        cssbulk: DIRNAME('/src/scss/**/*.css'),
-        js: DIRNAME('/src/index.js'),
-        jsbulk: DIRNAME('/src/**/*.js'),
-        images: DIRNAME('/src/img/**/*'),
-        public: DIRNAME('/public'),
-        assetsPublic: DIRNAME('/public/assets'),
+// SETTINGS
+const PATHS = {
+    source: {
+        scss: 'src/scss',
+        css: 'src/scss/',
+        js: 'src/**/*.{js,ts,jsx,tsx}',
+        images: 'src/img',
+        fonts: 'src/fonts/**/*.{ttf,woff,woff2}',
+        public: 'public/**/*',
     },
-
-    extensions: ['.js', '.ts', '.hbs', '.html', '.md', '*', '.scss', '.css'],
+    dist: {
+        css: 'dist/css',
+        js: 'dist/js',
+        images: 'dist/images',
+        fonts: 'dist/fonts',
+    },
 };
 
-const {css, cssbulk, js, jsbulk, images, public, assetsPublic} = resolve.alias;
+// Converting from .scss to .css:
+function scssToCss() {
+    return src([PATHS.source.scss + '/*.scss', PATHS.source.scss + '/*.css'])
+        .pipe(sourcemaps.init())
+        .pipe(sass({sourceMap: true, outputStyle: 'nested'}))
+        .pipe(
+            prefix({
+                browsers: ['last 2 versions', 'ie >= 9', 'Android >= 4.4'],
+                cascade: true,
+                flexbox: true,
+            })
+        )
+        .pipe(
+            minify({
+                level: 2,
+                sourceMap: true,
+            })
+        )
+        .pipe(sourcemaps.write('.'))
+        .pipe(dest(PATHS.dist.css));
+}
 
-function compileSass() {}
+// Minify and Optmize all Images:
+function imageOptimization() {
+    return src(PATHS.source.images + '/**/*.{jpg,png,jpeg}') // change to your source directory
+        .pipe(
+            imagemin([
+                imagemin.mozjpeg({quality: 85, progressive: true}),
+                imagemin.optipng({
+                    optimizationLevel: 5,
+                    bitDepthReduction: true,
+                    paletteReduction: true,
+                }),
+                imagemin.svgo(),
+                imagemin.gifsicle({interlaced: true}),
+            ])
+        )
+        .pipe(dest(PATHS.dist.images)); // change to your final/public directory
+}
 
-// function buildStyles() {
-//     return src(`${entryDirectory}scss/**/${extensions[0]}`)
-//         .pipe(sourcemaps.init())
-//         .pipe(plumber())
-//         .pipe(sass().on('error', sass.logError))
-//         .pipe(postcss([autoprefixer()]))
-//         .pipe(sourcemaps.write('.'))
-//         .pipe(dest(`${outputDirectory}css/`))
-//         .pipe(server.stream());
-// }
+// Converting all jpg and png images to Webp Version:
+function webpImage() {
+    return src(PATHS.dist.images + '/*.{jpg,png,jpeg}')
+        .pipe(imagewebp())
+        .pipe(dest(PATHS.dist.images + '/webp'));
+}
 
-// // TASK: Javascript Building:
-// function buildScripts() {
-//     return src(`${entryDirectory}js/**/${extensions[1]}`)
-//         .pipe(sourcemaps.init())
-//         .pipe(babel(babelPresets, babelPlugins))
-//         .pipe(sourcemaps.write('.'))
-//         .pipe(dest(`${outputDirectory}js/`))
-//         .pipe(server.stream());
-// }
+// minify js
+function jsminify() {
+    return src(PATHS.source.js)
+        .pipe(sourcemaps.init())
+        .pipe(
+            terser({
+                safari10: true,
+                keep_classnames: true,
+                keep_fnames: true,
+                sourceMap: true,
+                toplevel: true,
+                warnings: true,
+                output: {
+                    beautify: true,
+                    comments: false,
+                    semicolons: true,
+                    wrap_iife: true,
+                },
+            })
+        )
+        .pipe(sourcemaps.write('.'))
+        .pipe(dest(PATHS.dist.js)); // change to your final/public directory
+}
 
-// TASK: Watching Mode Running:
-// function watching() {
-//     const server = bsync.init({
-//         server: `${publicPath}`,
-//         port: PORT,
-//         injectChanges: true,
-//         logFileChanges: true,
-//         timestamps: true,
-//         serveStatic: ['./public'],
-//         notify: true,
-//     });
-//     // SCSS => CSS
-//     watch([`${entryDirectory}/scss/**/${extensions[0]}`], buildStyles);
+// Watching Mode:
+function watchTask() {
+    // @ts-ignore
+    watch(PATHS.source.scss, series(scssToCss, minify));
+    watch(PATHS.source.js, jsminify);
+    watch(PATHS.source.images + '/**/*.{jpg,png,jpeg}', imageOptimization);
+    watch(PATHS.dist.images + '/*.{jpg,png,jpeg}', webpImage);
+}
 
-//     // JS input => Javascript output
-//     watch([`${entryDirectory}/**/${extensions[1]}`], buildScripts).on(
-//         'change',
-//         server.reload
-//     );
-
-//     // HTML input => HTML output
-//     watch([`${entryDirectory}/**/${extensions[3]}`]).on(
-//         'change',
-//         server.reload
-//     );
-// }
+// Exec default Gulp Task:
+exports.default = series(
+    scssToCss,
+    jsminify,
+    imageOptimization,
+    webpImage,
+    watchTask
+);
