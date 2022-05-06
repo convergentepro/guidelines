@@ -1,59 +1,65 @@
 {
-  "name": "convergente-guidelines",
-  "version": "1.0.0",
-  "description": "Guidelines branding of My professional Trade Mark - Convergente Productions Media Studios",
-  "main": "webpack.config.js",
-  "scripts": {
-    "build": "vite build --config vite.config.js",
-    "dev": "vite serve --config vite.config.js",
-    "start": "nodemon -e=scss,css,html,js,ts,json,hbs,mjs,mts src/index.js",
-    "sass": "sass --watch --style=compressed src/scss/index.scss public/static/app.css"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/convergentepro/guidelines.github.io.git"
-  },
-  "keywords": [
-    "webpack",
-    "sass",
-    "guidelines",
-    "ui-kits",
-    "design-systems"
-  ],
-  "author": "Sergio Jurado Casado <sergiojurado.casado@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/convergentepro/guidelines.github.io/issues"
-  },
-  "homepage": "https://github.com/convergentepro/guidelines.github.io#readme",
-  "devDependencies": {
-    "@babel/core": "^7.17.10",
-    "@babel/preset-env": "^7.17.10",
-    "@babel/preset-typescript": "^7.16.7",
-    "@typescript-eslint/eslint-plugin": "^5.22.0",
-    "@typescript-eslint/parser": "^5.22.0",
-    "autoprefixer": "^10.4.7",
-    "cors": "^2.8.5",
-    "cross-env": "^7.0.3",
-    "dart-sass": "^1.25.0",
-    "dotenv": "^16.0.0",
-    "eslint": "^8.14.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-webpack-plugin": "^3.1.1",
-    "express": "^4.18.1",
-    "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-notifier": "^1.0.6",
-    "gulp-plumber": "^1.2.1",
-    "gulp-sass": "^5.1.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "postcss": "^8.4.13",
-    "sass": "^1.51.0",
-    "typescript": "^4.6.4",
-    "vite": "^2.9.8"
-  },
-  "type": "module"
+    "name": "convergente-guidelines",
+    "version": "1.0.0",
+    "description": "Guidelines branding of My professional Trade Mark - Convergente Productions Media Studios",
+    "main": "webpack.config.js",
+    "scripts": {
+        "build": "vite build --config vite.config.js",
+        "dev": "vite serve --config vite.config.js",
+        "start": "nodemon -e=scss,css,html,js,ts,json,hbs,mjs,mts src/index.js",
+        "gulp": "gulp -f gulpfile.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/convergentepro/guidelines.github.io.git"
+    },
+    "keywords": [
+        "webpack",
+        "sass",
+        "guidelines",
+        "ui-kits",
+        "design-systems"
+    ],
+    "author": "Sergio Jurado Casado <sergiojurado.casado@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/convergentepro/guidelines.github.io/issues"
+    },
+    "homepage": "https://github.com/convergentepro/guidelines.github.io#readme",
+    "devDependencies": {
+        "@babel/core": "^7.17.10",
+        "@babel/preset-env": "^7.17.10",
+        "@babel/preset-typescript": "^7.16.7",
+        "@babel/register": "^7.17.7",
+        "@typescript-eslint/eslint-plugin": "^5.22.0",
+        "@typescript-eslint/parser": "^5.22.0",
+        "autoprefixer": "^10.4.7",
+        "cors": "^2.8.5",
+        "cross-env": "^7.0.3",
+        "dart-sass": "^1.25.0",
+        "dotenv": "^16.0.0",
+        "eslint": "^8.14.0",
+        "eslint-config-standard": "^17.0.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-promise": "^6.0.0",
+        "eslint-webpack-plugin": "^3.1.1",
+        "express": "^4.18.1",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^8.0.0",
+        "gulp-babel": "^8.0.0",
+        "gulp-clean-css": "^4.3.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-imagemin": "^8.0.0",
+        "gulp-notifier": "^1.0.6",
+        "gulp-plumber": "^1.2.1",
+        "gulp-sass": "^5.1.0",
+        "gulp-sourcemaps": "^3.0.0",
+        "gulp-terser": "^2.1.0",
+        "gulp-webp": "^4.0.1",
+        "node-sass": "^7.0.1",
+        "postcss": "^8.4.13",
+        "sass": "^1.51.0",
+        "typescript": "^4.6.4",
+        "vite": "^2.9.8"
+    }
 }
