@@ -1,0 +1,65 @@
+:root {
+  --blue-100: hsl(245, 80%, 88%);
+  --blue-200: hsl(245, 80%, 68%);
+  --blue-300: hsl(245, 80%, 48%);
+  --blue-400: hsl(245, 80%, 28%);
+  --blue-500: hsl(245, 80%, 18%);
+  --green-100: hsl(135, 70%, 85%);
+  --green-200: hsl(135, 70%, 65%);
+  --green-300: hsl(135, 70%, 45%);
+  --green-400: hsl(135, 70%, 25%);
+  --green-500: hsl(135, 70%, 15%);
+  --apricot-100: hsl(25, 80%, 88%);
+  --apricot-200: hsl(25, 80%, 68%);
+  --apricot-300: hsl(25, 80%, 48%);
+  --apricot-400: hsl(25, 80%, 28%);
+  --apricot-500: hsl(25, 80%, 18%);
+  --crimson-100: hsl(355, 85%, 88%);
+  --crimson-200: hsl(355, 85%, 68%);
+  --crimson-300: hsl(355, 85%, 48%);
+  --crimson-400: hsl(355, 85%, 28%);
+  --crimson-500: hsl(355, 85%, 18%);
+  --golden-100: hsl(50, 80%, 88%);
+  --golden-200: hsl(50, 80%, 68%);
+  --golden-300: hsl(50, 80%, 48%);
+  --golden-400: hsl(50, 80%, 28%);
+  --golden-500: hsl(50, 80%, 18%);
+  --indigo-100: hsl(265, 80%, 88%);
+  --indigo-200: hsl(265, 80%, 68%);
+  --indigo-300: hsl(265, 80%, 48%);
+  --indigo-400: hsl(265, 80%, 28%);
+  --indigo-500: hsl(265, 80%, 18%);
+  --whitesmoke: hsl(0, 0%, 95%);
+  --gray-100: hsl(0, 0%, 88%);
+  --gray-200: hsl(0, 0%, 68%);
+  --gray-300: hsl(0, 0%, 48%);
+  --gray-400: hsl(0, 0%, 28%);
+  --gray-500: hsl(0, 0%, 18%);
+  --charcoal: hsl(0, 0%, 10%);
+}
+
+/* NORMALIZE */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  box-sizing: border-box;
+}
+
+*::after,
+*::before,
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: steelblue;
+  color: whitesmoke;
+  text-align: center;
+  padding-top: 50vh;
+}
+/*# sourceMappingURL=index.css.map */
