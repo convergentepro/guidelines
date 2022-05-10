@@ -1,5 +1,6 @@
 // FUNCTIONS HELPERS:
-import {CONLOG, DIRNAME} from './config/helpers.js';
+import {CLOG, DIRNAME} from './helpers';
 import './scss/index.scss';
 
-CONLOG('PUBLIC PATH' + DIRNAME('/public'));
+// Print in console.log this message:
+CLOG('PUBLIC PATH' + DIRNAME('/public'));

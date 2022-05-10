@@ -1,1 +1,8 @@
-export {CONLOG, DIRNAME, NODE_ENV, NODE_HOST, NODE_PORT} from './helpers';
+import {config} from 'dotenv';
+
+// Settings:
+config();
+
+export const ENVIROMENT = process.env.NODE_ENV || 'development';
+export const NODE_PORT = process.env.PORT || 3000;
+export const NODE_HOST = process.env.HOST || 'http://localhost';
