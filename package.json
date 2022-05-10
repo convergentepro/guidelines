@@ -11,8 +11,8 @@
         "start": "node index.js",
         "build": "vite build -c vite.config.js",
         "dev": "vite -c vite.config.js",
-        "sass:dev": "sass -w src/scss/index.scss src/css/utilities.css",
-        "sass:build": "sass src/css/utilities.css public/assets/index.css --style compressed"
+        "sass:dev": "sass -w src/scss/index.scss src/css/globals.css",
+        "sass:build": "sass src/css/utils.css public/assets/index.css --style compressed"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.7",
