@@ -1,39 +1,39 @@
-//----------------------------------------------------------------
-// ? BREAKPOINTS
-//----------------------------------------------------------------
-@mixin mqsm {
-    @media screen and (max-width: map-get($breakpoints, 'sm')) {
+// BREAKPOINTS MEDIA QUERIES:
+@mixin media-bp-up($bp: '') {
+    @if ($bp == '') {
         @content;
+    } @else if($bp == 'sm') {
+        @media screen and (min-width: map-get($breakpoints, 'sm')) {
+            @content;
+        }
+    } @else if($bp == 'md') {
+        @media screen and (min-width: map-get($breakpoints, 'md')) {
+            @content;
+        }
+    } @else if($bp == 'lg') {
+        @media screen and (min-width: map-get($breakpoints, 'lg')) {
+            @content;
+        }
+    } @else if($bp == 'xl') {
+        @media screen and (min-width: map-get($breakpoints, 'xl')) {
+            @content;
+        }
+    } @else {
+        @media screen and (min-width: map-get($breakpoints, '2xl')) {
+            @content;
+        }
     }
 }
 
-@mixin mqmd {
-    @media screen and (max-width: map-get($breakpoints, 'md')) {
-        @content;
-    }
-}
-
-@mixin mqlg {
-    @media screen and (max-width: map-get($breakpoints, 'lg')) {
-        @content;
-    }
-}
-
-@mixin mqxl {
-    @media screen and (max-width: map-get($breakpoints, 'xl')) {
-        @content;
-    }
-}
-
-@mixin mq2xl {
-    @media screen and (max-width: map-get($breakpoints, '2xl')) {
-        @content;
-    }
-}
-
-@mixin mq3xl {
-    @media screen and (max-width: map-get($breakpoints, '3xl')) {
-        @content;
+@mixin aspectRatios($map: $aspectRatios, $ratius) {
+    @if ($enableClasses ==true) {
+        @each $ratio in $map {
+            .ratio-#{$ratio} {
+                aspect-ratio: #{$ratio};
+            }
+        }
+    } @else {
+        aspect-ratio: #{$ratius};
     }
 }
 
@@ -62,235 +62,17 @@
         }
     }
 }
-@mixin createThemeBkgColors($map: $brandColors, $setBkgColor) {
+
+@mixin createThemeColors($map: $brandColors, $hasTextColor: true) {
     @if ($enableClasses==true) {
-        @each $k, $v in $map {
-            .bg-#{$k} {
-                background-color: map-get($map, #{$k});
-            }
-        }
-
-        @include mqsm {
-            @each $k, $v in $map {
-                .sm_bg-#{$k} {
-                    background-color: map-get($map, #{$k});
+        @each $k, $v in $brandColors {
+            @if ($hasTextColor == false) {
+                .bg-#{$k} {
+                    background-color: map-get($brandColors, #{$k});
                 }
-            }
-        }
-
-        @include mqmd {
-            @each $k, $v in $map {
-                .md_bg-#{$k} {
-                    background-color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mqlg {
-            @each $k, $v in $map {
-                .lg_bg-#{$k} {
-                    background-color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mqxl {
-            @each $k, $v in $map {
-                .xl_bg-#{$k} {
-                    background-color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mq2xl {
-            @each $k, $v in $map {
-                .xxl_bg-#{$k} {
-                    background-color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mq3xl {
-            @each $k, $v in $map {
-                .xxxl_bg-#{$k} {
-                    background-color: map-get($map, #{$k});
-                }
-            }
-        }
-    } @else {
-        background-color: map-get($map, #{$setBkgColor});
-    }
-}
-@mixin createThemeTextColors($map: $brandColors, $setTextColor) {
-    @if ($enableClasses==true) {
-        @each $k, $v in $map {
-            .text-#{$k} {
-                color: map-get($map, #{$k});
-            }
-        }
-
-        @include mqsm {
-            @each $k, $v in $map {
-                .sm_text-#{$k} {
-                    color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mqmd {
-            @each $k, $v in $map {
-                .md_text-#{$k} {
-                    color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mqlg {
-            @each $k, $v in $map {
-                .lg_text-#{$k} {
-                    color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mqxl {
-            @each $k, $v in $map {
-                .xl_text-#{$k} {
-                    color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mq2xl {
-            @each $k, $v in $map {
-                .xxl_text-#{$k} {
-                    color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mq3xl {
-            @each $k, $v in $map {
-                .xxxl_text-#{$k} {
-                    color: map-get($map, #{$k});
-                }
-            }
-        }
-    } @else {
-        color: map-get($map, #{$setTextColor});
-    }
-}
-@mixin createThemeBorderColors($map: $brandColors, $setBorderColor) {
-    @if ($enableClasses==true) {
-        @each $k, $v in $map {
-            .border-#{$k} {
-                border-color: map-get($map, #{$k});
-            }
-        }
-
-        @include mqsm {
-            @each $k, $v in $map {
-                .sm_border-#{$k} {
-                    border-color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mqmd {
-            @each $k, $v in $map {
-                .md_border-#{$k} {
-                    border-color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mqlg {
-            @each $k, $v in $map {
-                .lg_border-#{$k} {
-                    border-color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mqxl {
-            @each $k, $v in $map {
-                .xl_border-#{$k} {
-                    border-color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mq2xl {
-            @each $k, $v in $map {
-                .xxl_border-#{$k} {
-                    border-color: map-get($map, #{$k});
-                }
-            }
-        }
-
-        @include mq3xl {
-            @each $k, $v in $map {
-                .xxxl_border-#{$k} {
-                    border-color: map-get($map, #{$k});
-                }
-            }
-        }
-    } @else {
-        border-color: map-get($map, #{$setBorderColor});
-    }
-}
-@mixin createBorderWidths($endCounter, $setBorderWidth) {
-    @if ($enableClasses == true) {
-        @for $i from 0 through $endCounter {
-            .border-#{$i} {
-                border-width: #{$i * 1px};
-            }
-        }
-
-        @include mqsm {
-            @for $i from 0 through $endCounter {
-                .sm_border-#{$i} {
-                    border-width: #{$i * 1px};
-                }
-            }
-        }
-
-        @include mqmd {
-            @for $i from 0 through $endCounter {
-                .md_border-#{$i} {
-                    border-width: #{$i * 1px};
-                }
-            }
-        }
-
-        @include mqlg {
-            @for $i from 0 through $endCounter {
-                .lg_border-#{$i} {
-                    border-width: #{$i * 1px};
-                }
-            }
-        }
-
-        @include mqxl {
-            @for $i from 0 through $endCounter {
-                .xl_border-#{$i} {
-                    border-width: #{$i * 1px};
-                }
-            }
-        }
-
-        @include mq2xl {
-            @for $i from 0 through $endCounter {
-                .xxl_border-#{$i} {
-                    border-width: #{$i * 1px};
-                }
-            }
-        }
-
-        @include mq3xl {
-            @for $i from 0 through $endCounter {
-                .xxxl_border-#{$i} {
-                    border-width: #{$i * 1px};
+            } @else {
+                .text-#{$k} {
+                    color: map-get($brandColors, #{$k});
                 }
             }
         }

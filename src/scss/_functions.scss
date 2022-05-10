@@ -1,0 +1,7 @@
+@function mixerLighten($color, $amount: 10%) {
+    @return lighten(var(--#{$color}), #{$amount * 1%});
+}
+
+@function mixerDarken($color, $amount) {
+    @return darken(var($color), $amount);
+}

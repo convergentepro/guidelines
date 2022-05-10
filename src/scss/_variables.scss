@@ -6,83 +6,86 @@ $radiusBase: 8px !default;
 
 //----------------------------------------------------------------
 // ? THEMES: BGCOLOR, TEXTCOLOR, BORDERS, etc.
-$blue-100: hsl(245, 80%, 88%);
-$blue-200: hsl(245, 80%, 68%);
-$blue-300: hsl(245, 80%, 48%);
-$blue-400: hsl(245, 80%, 28%);
-$blue-500: hsl(245, 80%, 18%);
-$green-100: hsl(135, 70%, 85%);
-$green-200: hsl(135, 70%, 65%);
-$green-300: hsl(135, 70%, 45%);
-$green-400: hsl(135, 70%, 25%);
-$green-500: hsl(135, 70%, 15%);
-$apricot-100: hsl(25, 80%, 88%);
-$apricot-200: hsl(25, 80%, 68%);
-$apricot-300: hsl(25, 80%, 48%);
-$apricot-400: hsl(25, 80%, 28%);
-$apricot-500: hsl(25, 80%, 18%);
-$crimson-100: hsl(355, 85%, 88%);
-$crimson-200: hsl(355, 85%, 68%);
-$crimson-300: hsl(355, 85%, 48%);
-$crimson-400: hsl(355, 85%, 28%);
-$crimson-500: hsl(355, 85%, 18%);
-$golden-100: hsl(50, 80%, 88%);
-$golden-200: hsl(50, 80%, 68%);
-$golden-300: hsl(50, 80%, 48%);
-$golden-400: hsl(50, 80%, 28%);
-$golden-500: hsl(50, 80%, 18%);
-$indigo-100: hsl(265, 80%, 88%);
-$indigo-200: hsl(265, 80%, 68%);
-$indigo-300: hsl(265, 80%, 48%);
-$indigo-400: hsl(265, 80%, 28%);
-$indigo-500: hsl(265, 80%, 18%);
-$gray-100: hsl(0, 0%, 88%);
-$gray-200: hsl(0, 0%, 68%);
-$gray-300: hsl(0, 0%, 48%);
-$gray-400: hsl(0, 0%, 28%);
-$gray-500: hsl(0, 0%, 18%);
-$white: hsl(0, 0%, 95%);
-$black: hsl(0, 0%, 10%);
+$transparent: transparent;
+$currentColor: currentColor;
 
-// THEME: COLORS MAP:
+// Brand Tones Lighten: 958cf2-f2b58c-dded92-f28c96-f2e18c-b78cf2-8cc8f2-0d736a
+$primaryLight: #958cf2;
+$secondaryLight: #f2b58c;
+$oliveLight: #dded92;
+$dangerLight: #f28c96;
+$goldenLight: #f2e18c;
+$indigoLight: #b78cf2;
+$perssianLight: #8cc8f2;
+$cyanLight: #8cf2ea;
+
+// Brand Tones: 2a19e6-e66f19-c3e619-e6192a-e6c419-6f19e6-1991e6-8cf2ea
+$primary: #2a19e6;
+$secondary: #e66f19;
+$olive: #c3e619;
+$danger: #e6192a;
+$golden: #e6c419;
+$indigo: #6f19e6;
+$perssian: #1991e6;
+$cyan: #19e6d4;
+
+// Brand Tones Darken: 150d73-a54d0d-5e6d12-730d15-a58c0d-370d73-0d4873-0d736a
+$primaryDark: #150d73;
+$secondaryDark: #a54d0d;
+$oliveDark: #5e6d12;
+$dangerDark: #730d15;
+$goldenDark: #a58c0d;
+$indigoDark: #370d73;
+$perssianDark: #0d4873;
+$cyanDark: #0d736a;
+
+// Grayscale Neutral Tones: f5f5f5-bfbfbf-808080-404040-1a1a1a
+$white: #f5f5f5;
+$grayLight: #bfbfbf;
+$grayMedium: #808080;
+$grayDark: #404040;
+$black: #1a1a1a;
+
 $brandColors: (
-    'blue-100': $blue-100,
-    'blue-200': $blue-200,
-    'blue-300': $blue-300,
-    'blue-400': $blue-400,
-    'blue-500': $blue-500,
-    'green-100': $green-100,
-    'green-200': $green-200,
-    'green-300': $green-300,
-    'green-400': $green-400,
-    'green-500': $green-500,
-    'apricot-100': $apricot-100,
-    'apricot-200': $apricot-200,
-    'apricot-300': $apricot-300,
-    'apricot-400': $apricot-400,
-    'apricot-500': $apricot-500,
-    'crimson-100': $crimson-100,
-    'crimson-200': $crimson-200,
-    'crimson-300': $crimson-300,
-    'crimson-400': $crimson-400,
-    'crimson-500': $crimson-500,
-    'golden-100': $golden-100,
-    'golden-200': $golden-200,
-    'golden-300': $golden-300,
-    'golden-400': $golden-400,
-    'golden-500': $golden-500,
-    'indigo-100': $indigo-100,
-    'indigo-200': $indigo-200,
-    'indigo-300': $indigo-300,
-    'indigo-400': $indigo-400,
-    'indigo-500': $indigo-500,
-    'gray-100': $gray-100,
-    'gray-200': $gray-200,
-    'gray-300': $gray-300,
-    'gray-400': $gray-400,
-    'gray-500': $gray-500,
-    'white': $white,
-    'black': $black,
+    'transparent': transparent,
+    'currentColor': currentColor,
+
+    // Brand Tones Lighten: 958cf2-f2b58c-dded92-f28c96-f2e18c-b78cf2-8cc8f2-0d736a
+    'primaryLight': #958cf2,
+    'secondaryLight': #f2b58c,
+    'oliveLight': #dded92,
+    'dangerLight': #f28c96,
+    'goldenLight': #f2e18c,
+    'indigoLight': #b78cf2,
+    'perssianLight': #8cc8f2,
+    'cyanLight': #8cf2ea,
+
+    // Brand Tones: 2a19e6-e66f19-c3e619-e6192a-e6c419-6f19e6-1991e6-8cf2ea
+    'primary': #2a19e6,
+    'secondary': #e66f19,
+    'olive': #c3e619,
+    'danger': #e6192a,
+    'golden': #e6c419,
+    'indigo': #6f19e6,
+    'perssian': #1991e6,
+    'cyan': #19e6d4,
+
+    // Brand Tones Darken: 150d73-a54d0d-5e6d12-730d15-a58c0d-370d73-0d4873-0d736a
+    'primaryDark': #150d73,
+    'secondaryDark': #a54d0d,
+    'oliveDark': #5e6d12,
+    'dangerDark': #730d15,
+    'goldenDark': #a58c0d,
+    'indigoDark': #370d73,
+    'perssianDark': #0d4873,
+    'cyanDark': #0d736a,
+
+    // Grayscale Neutral Tones: f5f5f5-bfbfbf-808080-404040-1a1a1a
+    'white': #f5f5f5,
+    'grayLight': #bfbfbf,
+    'grayMedium': #808080,
+    'grayDark': #404040,
+    'black': #1a1a1a,
 );
 
 $borderStyles: (
@@ -96,9 +99,6 @@ $borderStyles: (
     inset,
     outset
 );
-
-//----------------------------------------------------------------
-// ? LAYOUT: Breakpoints, Display, Flexbox, Grid, etc.
 
 // MQ Breakpoints:
 $breakpoints: (
