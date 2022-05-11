@@ -1,8 +1,8 @@
-import {join} from 'path';
+import path from 'path';
 
 // * DIRNAME shorthand helper function:
 export function DIRNAME(routePath = '') {
-    return join(__dirname, `${routePath}`);
+    return path.join(__dirname, `${routePath}`);
 }
 
 // * Console.log shorthand helper function:

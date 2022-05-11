@@ -1,49 +1,6 @@
-//----------------------------------------------------------------
-// ? UTILS: Themes, Layout, Typography, Flexbox, etc.
-//----------------------------------------------------------------
-
-/* BACKGROUND COLORS */
+@include createLayoutDisplays($displays, '');
+@include createPositions($positions);
 @include createThemeColors($brandColors, false);
-
-/* TEXT COLORS */
 @include createThemeColors($brandColors, true);
 
-@include media-bp-up('sm') {
-    /* BACKGROUND COLORS */
-    @include createThemeColors($brandColors, false);
-
-    /* TEXT COLORS */
-    @include createThemeColors($brandColors, true);
-}
-
-@include media-bp-up('md') {
-    /* BACKGROUND COLORS */
-    @include createThemeColors($brandColors, false);
-
-    /* TEXT COLORS */
-    @include createThemeColors($brandColors, true);
-}
-
-@include media-bp-up('lg') {
-    /* BACKGROUND COLORS */
-    @include createThemeColors($brandColors, false);
-
-    /* TEXT COLORS */
-    @include createThemeColors($brandColors, true);
-}
-
-@include media-bp-up('xl') {
-    /* BACKGROUND COLORS */
-    @include createThemeColors($brandColors, false);
-
-    /* TEXT COLORS */
-    @include createThemeColors($brandColors, true);
-}
-
-@include media-bp-up('2xl') {
-    /* BACKGROUND COLORS */
-    @include createThemeColors($brandColors, false);
-
-    /* TEXT COLORS */
-    @include createThemeColors($brandColors, true);
-}
+@include createAspectRatios($aspectRatios);

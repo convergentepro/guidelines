@@ -10,9 +10,8 @@
     "scripts": {
         "start": "node index.js",
         "build": "vite build -c vite.config.js",
-        "dev": "vite -c vite.config.js",
-        "sass:dev": "sass -w src/scss/index.scss src/css/globals.css",
-        "sass:build": "sass src/css/utils.css public/assets/index.css --style compressed"
+        "dev": "vite",
+        "sass:dev": "sass -w src/scss/index.scss:public/index.css"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.7",

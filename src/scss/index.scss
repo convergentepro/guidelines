@@ -1,9 +1,7 @@
-// SETTINGS:
-@import 'variables';
-@import 'functions';
-@import 'mixins';
+@import 'config/variables';
+@import 'config/functions';
+@import 'config/mixins';
 
-@import 'themes';
-@import 'layout';
+// LAYOUT AND RESET:
 @import 'utils';
 @import 'normalize';

@@ -8,96 +8,42 @@ $radiusBase: 8px !default;
 // ? THEMES: BGCOLOR, TEXTCOLOR, BORDERS, etc.
 $transparent: transparent;
 $currentColor: currentColor;
-
-// Brand Tones Lighten: 958cf2-f2b58c-dded92-f28c96-f2e18c-b78cf2-8cc8f2-0d736a
-$primaryLight: #958cf2;
-$secondaryLight: #f2b58c;
-$oliveLight: #dded92;
-$dangerLight: #f28c96;
-$goldenLight: #f2e18c;
-$indigoLight: #b78cf2;
-$perssianLight: #8cc8f2;
-$cyanLight: #8cf2ea;
-
-// Brand Tones: 2a19e6-e66f19-c3e619-e6192a-e6c419-6f19e6-1991e6-8cf2ea
 $primary: #2a19e6;
-$secondary: #e66f19;
-$olive: #c3e619;
-$danger: #e6192a;
+$secondary: #ff6347;
+$olive: #7ad025;
+$danger: #dc1839;
 $golden: #e6c419;
 $indigo: #6f19e6;
 $perssian: #1991e6;
 $cyan: #19e6d4;
-
-// Brand Tones Darken: 150d73-a54d0d-5e6d12-730d15-a58c0d-370d73-0d4873-0d736a
-$primaryDark: #150d73;
-$secondaryDark: #a54d0d;
-$oliveDark: #5e6d12;
-$dangerDark: #730d15;
-$goldenDark: #a58c0d;
-$indigoDark: #370d73;
-$perssianDark: #0d4873;
-$cyanDark: #0d736a;
-
-// Grayscale Neutral Tones: f5f5f5-bfbfbf-808080-404040-1a1a1a
+$primary-100: lighten($primary, 20%);
+$indigo-100: lighten($indigo, 20%);
+$perssian-100: lighten($perssian, 20%);
 $white: #f5f5f5;
-$grayLight: #bfbfbf;
-$grayMedium: #808080;
-$grayDark: #404040;
+$gray-100: #bfbfbf;
+$gray-200: #808080;
+$gray-300: #404040;
 $black: #1a1a1a;
 
 $brandColors: (
     'transparent': transparent,
     'currentColor': currentColor,
-
-    // Brand Tones Lighten: 958cf2-f2b58c-dded92-f28c96-f2e18c-b78cf2-8cc8f2-0d736a
-    'primaryLight': #958cf2,
-    'secondaryLight': #f2b58c,
-    'oliveLight': #dded92,
-    'dangerLight': #f28c96,
-    'goldenLight': #f2e18c,
-    'indigoLight': #b78cf2,
-    'perssianLight': #8cc8f2,
-    'cyanLight': #8cf2ea,
-
-    // Brand Tones: 2a19e6-e66f19-c3e619-e6192a-e6c419-6f19e6-1991e6-8cf2ea
-    'primary': #2a19e6,
-    'secondary': #e66f19,
-    'olive': #c3e619,
-    'danger': #e6192a,
-    'golden': #e6c419,
-    'indigo': #6f19e6,
-    'perssian': #1991e6,
-    'cyan': #19e6d4,
-
-    // Brand Tones Darken: 150d73-a54d0d-5e6d12-730d15-a58c0d-370d73-0d4873-0d736a
-    'primaryDark': #150d73,
-    'secondaryDark': #a54d0d,
-    'oliveDark': #5e6d12,
-    'dangerDark': #730d15,
-    'goldenDark': #a58c0d,
-    'indigoDark': #370d73,
-    'perssianDark': #0d4873,
-    'cyanDark': #0d736a,
-
-    // Grayscale Neutral Tones: f5f5f5-bfbfbf-808080-404040-1a1a1a
-    'white': #f5f5f5,
-    'grayLight': #bfbfbf,
-    'grayMedium': #808080,
-    'grayDark': #404040,
-    'black': #1a1a1a,
-);
-
-$borderStyles: (
-    none,
-    hidden,
-    dotted,
-    dashed,
-    solid,
-    groove,
-    ridge,
-    inset,
-    outset
+    'primary': $primary,
+    'secondary': $secondary,
+    'olive': $olive,
+    'danger': $danger,
+    'golden': $golden,
+    'indigo': $indigo,
+    'perssian': $perssian,
+    'cyan': $cyan,
+    'primary-light': $primary-100,
+    'indigo-light': $indigo-100,
+    'perssian-light': $perssian-100,
+    'white': $white,
+    'gray-100': $gray-100,
+    'gray-200': $gray-200,
+    'gray-300': $gray-300,
+    'black': $black,
 );
 
 // MQ Breakpoints:
@@ -123,12 +69,12 @@ $flexAlignItems: (
 );
 
 $flexJustifyContents: (
-    'Start': flex-start,
-    'End': flex-end,
-    'Center': center,
-    'Around': space-around,
-    'Between': space-between,
-    'Evenly': space-evenly,
+    'start': flex-start,
+    'center': center,
+    'end': flex-end,
+    'around': space-around,
+    'between': space-between,
+    'evenly': space-evenly,
 );
 
 $flexWrapper: (
@@ -199,15 +145,13 @@ $textTransforms: (none, uppercase, lowercase, capitalize);
 //----------------------------------------------------------------
 // ? UTILITIES: Border Radius, Opacity, Overflows, Shadows, etc...
 $aspectRatios: (
-    '1-1': '1/1',
-    '16-9': '16/9',
-    '9-16': '9/16',
-    '2-3': '2/3',
-    '3-2': '3/2',
-    '4-3': '4/3',
-    '3-4': '3/4',
-    '5-4': '5/4',
-    '4-5': '4/5',
+    '1': 1,
+    '16': 9,
+    '9': 16,
+    '5': 4,
+    '4': 5,
+    '3': 2,
+    '2': 3,
 );
 
 $cursors: (

@@ -1,31 +1,19 @@
 :root {
     --transparent: transparent;
     --currentColor: currentColor;
-    --primary-light: #aaa3f5;
-    --primary: #2918dc;
-    --primary-dark: #110a5c;
-    --secondary-light: #f5c4a3;
-    --secondary: #efa36c;
-    --secondary-dark: #5c2c0a;
-    --green-light: #e4f0a8;
-    --green: #bbd926;
-    --green-dark: #4b570f;
-    --danger-light: #f7a1aa;
-    --danger: #e21224;
-    --danger-dark: #5e080f;
-    --warning-light: #f5e7a3;
-    --warning: #dcbc18;
-    --warning-dark: #5c4e0a;
-    --info-light: #c5a3f5;
-    --info: #6f19e6;
-    --info-dark: #2c0a5c;
-    --perssian-blue: #105c93;
-    --cyan: #17cfbf;
-    --light: #f5f5f5;
-    --gray-light: #cccccc;
-    --gray-medium: #666666;
-    --gray-dark: #333333;
-    --dark: #1a1a1a;
+    --primary: #2a19e6;
+    --secondary: #ff6347;
+    --olive: #c3e619;
+    --danger: #e6192a;
+    --golden: #e6c419;
+    --indigo: #6f19e6;
+    --perssian: #1991e6;
+    --cyan: #19e6d4;
+    --white: #f5f5f5;
+    --gray-100: #bfbfbf;
+    --gray-200: #808080;
+    --gray-300: #404040;
+    --black: #1a1a1a;
 }
 
 /* NORMALIZE */
@@ -37,7 +25,6 @@ body {
     font-size: 10px;
     font-weight: 300;
     box-sizing: border-box;
-    background-color: var(--primary);
 }
 
 *::after,
@@ -48,8 +35,5 @@ body {
 
 body {
     min-height: 100vh;
-    background-color: steelblue;
-    color: whitesmoke;
-    text-align: center;
-    padding-top: 50vh;
+    // background-color: tomato;
 }
