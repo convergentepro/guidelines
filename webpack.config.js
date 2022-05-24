@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlPlugin = require('html-webpack-plugin');
 const {DIRNAME} = require('./src/helpers');
 
 // ENVIROMENTS VARIABLES:
@@ -22,14 +23,49 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env'],
-                        plugins: [
-                            '@babel/plugin-proposal-class-properties',
-                            '@babel/plugin-proposal-function-bind',
-                            '@babel/plugin-syntax-dynamic-import',
-                        ],
+                        plugins: ['@babel/plugin-syntax-dynamic-import'],
                     },
                 },
             },
+
+            {
+                test: /\.(html)$/i,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            minimize: true,
+                        },
+                    },
+                ],
+            },
+
+            {
+                test: /\.(svelte)$/i,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'svelte-loader',
+                    },
+                ],
+            },
         ],
     },
+
+    plugins: [
+        new HtmlPlugin({
+            template: './src/index.html',
+            filename: 'index.html',
+            inject: 'body',
+            cache: true,
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                html5: true,
+            },
+            title: 'Convergente Guidelines',
+            scriptLoading: 'defer',
+        }),
+    ],
 };
