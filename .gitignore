@@ -1,6 +1,8 @@
 .env
 public/
+package-lock.json
 # Logs
+yarn.lock
 logs
 *.log
 npm-debug.log*
