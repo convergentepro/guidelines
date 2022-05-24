@@ -5,7 +5,7 @@ const {DIRNAME} = require('./src/helpers');
 // ENVIROMENTS VARIABLES:
 // SETTINGS:
 
-console.log('Webpack Development Configuration!');
+
 module.exports = {
     name: 'Webpack Development Configuration',
     entry: ['./src/main.js', './src/scss/index.scss'],
@@ -22,11 +22,19 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env'],
-                        plugins: ['@babel/plugin-syntax-dynamic-import'],
+                        presets: ['@babel/preset-env', '@babel/runtime'],
+                        plugins: [
+                            '@babel/plugin-syntax-dynamic-import',
+                            '@babel/plugin-transform-runtime',
+                        ],
                     },
                 },
             },
+
+            // {
+            //     test: /\.s[ac]ss$/i,
+            //     use: [MiniCssPlugin.loader, 'css-loader', 'sass-loader'],
+            // },
 
             {
                 test: /\.(html)$/i,
