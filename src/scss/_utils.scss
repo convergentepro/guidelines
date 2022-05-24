@@ -1,6 +1,0 @@
-@include createLayoutDisplays($displays, '');
-@include createPositions($positions);
-@include createThemeColors($brandColors, false);
-@include createThemeColors($brandColors, true);
-
-@include createAspectRatios($aspectRatios);
