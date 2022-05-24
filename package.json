@@ -9,8 +9,9 @@
     "private": false,
     "scripts": {
         "start": "nodemon src/main.js",
-        "build": "vite build -c vite.config.js",
-        "dev": "vite serve -c vite.config.js"
+        "build": "vite build --mode=production -c vite.config.js",
+        "preview": "vite preview -c vite.config.js",
+        "dev": "vite serve --mode=development -c vite.config.js"
     },
     "devDependencies": {
         "@babel/cli": "^7.17.10",
