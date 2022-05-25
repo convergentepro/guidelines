@@ -1,192 +1,159 @@
-// SETTINGS VARIABLES:
-$enableClasses: true !default;
-$fontSizeBase: 10px !default;
-$lineHeightBase: 1.55 !default;
-$radiusBase: 8px !default;
+// Settings:
+$classes: true !default;
+$columns: 12;
+$rows: 6;
+// Branding Color Palettes: 
+$brandColors: ('indigo': #3d14b8,
+   'salmon': #ff6347,
+   'teal': #0e8181,
+   'persian': #071f40,
+   'success': #18dc7a,
+   'danger': #e6192a,
+   'warning': #f2d40d,
+   'info': #1991e6,
+   'gray100': #d7d6dc,
+   'gray200': #9da4af,
+   'gray300': #878a92,
+   'gray400': #3e3b45,
+   'white': #f0f0f0,
+   'black': #1c1c22,
+);
+
+// Breakpoints MQ:
+$breakpoints: ('xs': 0,
+   'sm': 576px,
+   'md': 768px,
+   'lg': 1024px,
+   'xl': 1280px,
+   'xxl': 1440px,
+);
 
 //----------------------------------------------------------------
-// ? THEMES: BGCOLOR, TEXTCOLOR, BORDERS, etc.
-$transparent: transparent;
-$currentColor: currentColor;
-$primary: #2a19e6;
-$secondary: #ff6347;
-$olive: #7ad025;
-$danger: #dc1839;
-$golden: #e6c419;
-$indigo: #6f19e6;
-$perssian: #1991e6;
-$cyan: #19e6d4;
-$primary-100: lighten($primary, 20%);
-$indigo-100: lighten($indigo, 20%);
-$perssian-100: lighten($perssian, 20%);
-$white: #f5f5f5;
-$gray-100: #bfbfbf;
-$gray-200: #808080;
-$gray-300: #404040;
-$black: #1a1a1a;
-
-$brandColors: (
-    'transparent': transparent,
-    'currentColor': currentColor,
-    'primary': $primary,
-    'secondary': $secondary,
-    'olive': $olive,
-    'danger': $danger,
-    'golden': $golden,
-    'indigo': $indigo,
-    'perssian': $perssian,
-    'cyan': $cyan,
-    'primary-light': $primary-100,
-    'indigo-light': $indigo-100,
-    'perssian-light': $perssian-100,
-    'white': $white,
-    'gray-100': $gray-100,
-    'gray-200': $gray-200,
-    'gray-300': $gray-300,
-    'black': $black,
-);
-
-// MQ Breakpoints:
-$breakpoints: (
-    'sm': 480px,
-    'md': 640px,
-    'lg': 768px,
-    'xl': 1024px,
-    '2xl': 1280px,
-    '3xl': 1400px,
-);
-
-// DISPLAYS:
-$displays: (inline, inline-block, block, inline-flex, flex, grid, table, none);
-
-// FLEXBOX VARIABLES:
-$flexAlignItems: (
-    'start': flex-start,
-    'end': flex-end,
-    'center': center,
-    'baseline': baseline,
-    'stretch': stretch,
-);
-
-$flexJustifyContents: (
-    'start': flex-start,
-    'center': center,
-    'end': flex-end,
-    'around': space-around,
-    'between': space-between,
-    'evenly': space-evenly,
-);
-
-$flexWrapper: (
-    'wrap': wrap,
-    'nowrap': nowrap,
-    'wrapReverse': wrap-reverse,
-);
-
-// POSITIONS:
-$positions: (relative, absolute, sticky, fixed, static);
-
-$zIndexes: (0, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 9999);
-
+// ? THEMES: Typography Variables Maps:
 //----------------------------------------------------------------
-// ? TYPOGRAPHY: Fonts, Font-Sizes, Line-Heights, etc...
-$fontFamily: (
-    'display': '"Jost", sans-serif',
-    'serif': '"Times New Roman", serif',
-    'monocode': ' "Source Code Pro", monospace',
-);
-$fontSizes: (
-    'none': 0,
-    'xs': 0.8rem,
-    'base': 1rem,
-    'sm': 1.2rem,
-    'md': 1.6rem,
-    'lg': 2rem,
-    'xl': 2.4rem,
-    '2xl': 3rem,
-    '3xl': 3.6rem,
-    '4xl': 4.8rem,
-    '5xl': 6rem,
-    '6xl': 7.2rem,
-    '7xl': 9.6rem,
-    '8xl': 12.8rem,
-);
-$fontWeights: (100, 200, 300, 400, 500, 600, 700, 800, 900);
 
-// LINE HEIGHTS:
-$lineHeights: (
-    'xs': 0.5,
-    'sm': 0.75,
-    'body': 1,
-    'md': 1.33,
-    'lg': 1.44,
-    'xl': 1.55,
-    '2xl': 1.618,
-    '3xl': 1.77,
-    '4xl': 2,
-);
-$listStyles: (
-    circle,
-    decimal,
-    decimal-leading-zero,
-    upper-alpha,
-    lower-alpha,
-    upper-roman,
-    lower-roman,
-    square,
-    none
+// Font Families Map:
+$fontFamilies: ('display': '"Jost", sans-serif',
+   'serif': '"Lora", serif',
+   'code': '"Source Code Pro", monospace',
 );
 
-// TEXTS VARIABLES:
-$textAlignments: (left, right, center, justify, unset);
+// Font Sizes Map:
+$fontSizes: ('0': 0,
+   '8': 0.8rem,
+   '10': 1rem,
+   '12': 1.2rem,
+   '16': 1.6rem,
+   '20': 2rem,
+   '24': 2.4rem,
+   '30': 3rem,
+   '36': 3.6rem,
+   '48': 4.8rem,
+);
+
+// Font Weights Map:
+$fontWeights: ('light': lighter,
+   'normal': normal,
+   'medium': medium,
+   'semibold': bold,
+   'bold': bolder,
+);
+
+// Line Height Map:
+$lineHeights: ('0': 0,
+   '8': 0.8rem,
+   '10': 1rem,
+   '15': 1.55rem,
+   '20': 2rem,
+   '28': 2.8rem,
+   '36': 3.6rem,
+   '48': 4.8rem,
+);
+
+// List Style Types:
+$listBullets: (circle,
+   decimal,
+   decimal-leading-zero,
+   upper-alpha,
+   lower-alpha,
+   upper-roman,
+   lower-roman,
+   square,
+   none);
+
+// Text Align Map:
+$textAligns: (left, right, center, justify, none);
+
+// Text Decorations Map:
 $textDecorations: (none, underline, overline, line-through);
+
+// Text Transforms Map:
 $textTransforms: (none, uppercase, lowercase, capitalize);
 
 //----------------------------------------------------------------
-// ? UTILITIES: Border Radius, Opacity, Overflows, Shadows, etc...
-$aspectRatios: (
-    '1': 1,
-    '16': 9,
-    '9': 16,
-    '5': 4,
-    '4': 5,
-    '3': 2,
-    '2': 3,
+// ? LAYOUT: FLEXBOX MAPS:
+//----------------------------------------------------------------
+
+$flexAlignItems: ('start': flex-start,
+   'end': flex-end,
+   'center': center,
+   'baseline': baseline,
+   'stretch': stretch,
 );
 
-$cursors: (
-    none,
-    unset,
-    auto,
-    pointer,
-    copy,
-    not-allowed,
-    progress,
-    help,
-    zoom-in,
-    zoom-out
+$flexJustifyContent: ('start': flex-start,
+   'end': flex-end,
+   'center': center,
+   'around': space-around,
+   'between': space-between,
+   'evenly': space-evenly,
 );
 
-$objectFitting: (auto, cover, contain, unset);
-
-$resizeInputs: (vertical, horizontal, both, unset);
-
-$overflow-map: (visible, hidden, scroll, auto, clip, unset);
-$visibility-map: (visible, hidden, collapse, unset);
-
-// Border Radius:
-$radiusBorder: (
-    'none': 0,
-    'xs': 0.8rem,
-    'base': 1rem,
-    'sm': 1.2rem,
-    'md': 1.6rem,
-    'lg': 2rem,
-    'xl': 2.4rem,
-    '2xl': 2.8rem,
-    '4xl': 3.2rem,
-    '5xl': 4.8rem,
-    '6xl': 6.4rem,
-    'circle': 50%,
-    'full': 100%,
+$flexDirectionMap: ('row': row,
+   'row-reverse': row-reverse,
+   'column': column,
+   'column-reverse': column-reverse,
 );
+
+$flexWrapperMap: ('wrap': wrap,
+   'wrap-reverse': wrap-reverse,
+   'nowrap': nowrap,
+);
+
+//----------------------------------------------------------------
+// ? UTILITIES VARIABLES & MAPS:
+//----------------------------------------------------------------
+$borderRadiusBase: 8 !default;
+$positions: (relative, absolute, sticky, fixed, static);
+$displays: (inline, inline-block, block, inline-flex, flex, grid, table, none);
+$ratiosMap: ('1-1': '1/1',
+   '16-9': '16/9',
+   '9-16': '9/16',
+   '2-3': '2/3',
+   '3-2': '3/2',
+   '4-3': '4/3',
+   '3-4': '3/4',
+   '5-4': '5/4',
+   '4-5': '4/5',
+);
+
+$radiusMap: ('none': 0,
+   '8': 0.8rem,
+   '10': 1rem,
+   '12': 1.2rem,
+   '16': 1.6rem,
+   '20': 2rem,
+   '24': 2.4rem,
+   '28': 2.8rem,
+   '32': 3.2rem,
+   '48': 4.8rem,
+   'full': 50%,
+   'screen': 100%,
+);
+
+// Utilities: Effects CSS:
+$cursorsMap: (none, pointer, copy, not-allowed, progress, help, zoom-in, zoom-out);
+$objectFitMap: (auto, cover, contain);
+$resizesMap: (vertical, horizontal, both);
+$overflows: (visible, hidden, scroll, auto, clip);
+$visibilityMap: (visible, hidden, collapse);

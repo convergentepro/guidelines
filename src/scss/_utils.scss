@@ -1,1 +1,39 @@
+// /* LAYOUT DISPLAY UTILITIES */
+@include createDisplay('');
 
+// /* Flex Factors: Grow, Shrink and Basis */
+@include createFlexFactor('');
+
+// /* FLEX ITEMS AND JUSTIFY ALIGNMENTS */
+@include createFlexAlignments('', true, true);
+
+// /* Flex Flow and Wraps */
+@include createFlexFlows('');
+
+// /* FLEX COLUMNS GRID  */
+@include createFlexColumnsGrid('', 12, 1.5rem);
+
+
+/* GRID TEMPLATE DYNAMIC COLUMNS */
+@include createGridTemplates('', true, true);
+
+
+@include media-up('sm') {
+   @include createFlexColumnsGrid('sm', 12, 1.5rem);
+}
+
+@include media-up('md') {
+   @include createFlexColumnsGrid('md', 12, 1.5rem);
+}
+
+@include media-up('lg') {
+   @include createFlexColumnsGrid('lg', 12, 1.5rem);
+}
+
+@include media-up('xl') {
+   @include createFlexColumnsGrid('xl', 12, 1.5rem);
+}
+
+@include media-up('xxl') {
+   @include createFlexColumnsGrid('xxl', 12, 1.5rem);
+}
