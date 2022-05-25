@@ -1,6 +1,6 @@
-// import './css/index.css';
+import './css/index.css';
 
-
+console.log('Run class Usuario');
 export class Usuario {
     #name = 'John';
 
