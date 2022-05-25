@@ -12,7 +12,8 @@
         "start": "nodemon src/main.js",
         "build": "webpack build --progress --mode=production -c webpack.config.js",
         "preview": "vite preview -c vite.config.js",
-        "dev": "vite serve --mode=development -c vite.config.js"
+        "dev": "vite serve --mode=development -c vite.config.js",
+        "sass": "postcss --parser=postcss-scss --watch --verbose src/scss/**/*.scss -o src/css/index.css --use autoprefixer --use cssnano"
     },
     "devDependencies": {
         "@babel/cli": "^7.17.10",
@@ -31,12 +32,14 @@
         "babel-loader": "^8.2.5",
         "babel-preset-es2015": "^6.24.1",
         "core-js": "^3.22.7",
+        "cssnano": "^5.1.9",
         "dotenv": "^16.0.1",
         "handlebars-loader": "^1.7.2",
         "html-loader": "^3.1.0",
         "html-webpack-plugin": "^5.5.0",
         "postcss": "^8.4.14",
         "postcss-cli": "^9.1.0",
+        "postcss-scss": "^4.0.4",
         "sass": "^1.52.1",
         "svelte-loader": "^3.1.2",
         "svelte-preprocess": "^4.10.6",
