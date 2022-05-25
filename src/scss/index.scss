@@ -1,7 +1,46 @@
-@import 'config/variables';
-@import 'config/functions';
-@import 'config/mixins';
+@import 'config/_variables.scss';
+@import 'config/_functions.scss';
+@import 'config/_mixins.scss';
 
-// LAYOUT AND RESET:
+// NORMALIZE: 
+:root {
+	--indigo: #3d14b8;
+	--salmon: #ff6347;
+	--teal: #0e8181;
+	--persian: #071f40;
+	--success: #18dc7a;
+	--danger: #e6192a;
+	--warning: #f2d40d;
+	--info: #1991e6;
+	--gray100: #d7d6dc;
+	--gray200: #9da4af;
+	--gray300: #878a92;
+	--gray400: #3e3b45;
+	--white: #f0f0f0;
+	--black: #1c1c22;
+}
+
+/* NORMALIZE */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    box-sizing: border-box;
+}
+
+*::after,
+*::before,
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    // background-color: tomato;
+}
+
+
 @import 'utils';
-@import 'normalize';
