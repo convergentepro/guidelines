@@ -12,10 +12,9 @@
         "start": "nodemon --exec babel-node src/main.js",
         "build": "vite build -c vite.config.js",
         "preview": "vite preview -c vite.config.js",
-        "dev": "vite serve -c vite.config.js",
-        "sass": "sass --watch src/scss/index.scss:src/css/index.css",
-        "postcss": "postcss --verbose -w src/css/index.css -o src/css/index.css --use=autoprefixer",
-        "css": "concurrently --kill-others \"npm run sass\" \"npm run postcss\""
+        "dev": "concurrently --kill-others \"npm run sass\" \"npm run postcss\" \"vite serve -c vite.config.js\"",
+        "sass": "sass -w --verbose src/scss/index.scss:src/css/index.css",
+        "postcss": "postcss --verbose -w src/css/index.css -o src/css/index.css --use=autoprefixer"
     },
     "devDependencies": {
         "@babel/cli": "^7.17.10",

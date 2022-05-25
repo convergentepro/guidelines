@@ -2,25 +2,24 @@
 @import 'config/_functions.scss';
 @import 'config/_mixins.scss';
 
-// NORMALIZE: 
+/* NORMALIZE & RESET */
 :root {
-	--indigo: #3d14b8;
-	--salmon: #ff6347;
-	--teal: #0e8181;
-	--persian: #071f40;
-	--success: #18dc7a;
-	--danger: #e6192a;
-	--warning: #f2d40d;
-	--info: #1991e6;
-	--gray-100: #d7d6dc;
-	--gray-200: #9da4af;
-	--gray-300: #878a92;
-	--gray-400: #3e3b45;
-	--theme-light: #f0f0f0;
-	--theme-dark: #1c1c22;
+	--indigo: hsl(255, 85%, 40%);
+	--salmon: hsl(9, 90%, 65%);
+	--teal: hsl(180, 80%, 36%);
+	--persian: hsl(218, 90%, 10%);
+	--success: hsl(150, 80%, 40%);
+	--danger: hsl(355, 80%, 48%);
+	--warning: hsl(48, 85%, 48%);
+	--info: hsl(200, 80%, 40%);
+	--gray-100: hsl(250, 10%, 80%);
+	--gray-200: hsl(220, 10%, 70%);
+	--gray-300: hsl(210, 10%, 50%);
+	--gray-400: hsl(260, 10%, 20%);
+	--theme-light: hsl(0, 0%, 96%);
+	--theme-dark: hsl(245, 15%, 10%);
 }
 
-/* NORMALIZE */
 html,
 body {
     margin: 0;
@@ -39,12 +38,14 @@ body {
 
 body {
 	@extend html;
-	 color: currentColor;
 	 font-size: 1.6rem;
 	 padding: 1.8rem 2rem;
-    background-color: whitesmoke;
+    background-color: var(--theme-dark);
+   //  color: var(--teal);
     min-height: 100vh;
 }
 
 
+
+/* UTILITY CLASSES: Activate $classes === true */
 @import 'utils';
