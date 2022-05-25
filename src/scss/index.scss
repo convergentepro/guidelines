@@ -25,8 +25,8 @@ html,
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 10px;
+    font-family: sans-serif;
+    font-size: 62.5%;
     font-weight: 300;
     box-sizing: border-box;
 }
@@ -38,8 +38,12 @@ body {
 }
 
 body {
+	@extend html;
+	 color: currentColor;
+	 font-size: 1.6rem;
+	 padding: 1.8rem 2rem;
+    background-color: whitesmoke;
     min-height: 100vh;
-    // background-color: tomato;
 }
 
 

@@ -1,6 +1,6 @@
 import {svelte} from '@sveltejs/vite-plugin-svelte';
 import {defineConfig} from 'vite';
-import {PORT} from './src/config';
+
 export default defineConfig({
     plugins: [svelte()],
     build: {
@@ -25,7 +25,7 @@ export default defineConfig({
 
     server: {
         hmr: true,
-        port: PORT,
+        port: 8000,
         open: false,
         cors: true,
     },

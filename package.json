@@ -10,11 +10,11 @@
     "type": "module",
     "scripts": {
         "start": "nodemon --exec babel-node src/main.js",
-        "build": "webpack build --progress --mode=production -c webpack.config.js",
+        "build": "vite build -c vite.config.js",
         "preview": "vite preview -c vite.config.js",
-        "dev": "vite serve --mode=development -c vite.config.js",
+        "dev": "vite serve -c vite.config.js",
         "sass": "sass --watch src/scss/index.scss:src/css/index.css",
-        "postcss": "postcss --verbose -w src/css/index.css -o src/css/index.css --use=autoprefixer --use=cssnano",
+        "postcss": "postcss --verbose -w src/css/index.css -o src/css/index.css --use=autoprefixer",
         "css": "concurrently --kill-others \"npm run sass\" \"npm run postcss\""
     },
     "devDependencies": {

@@ -1,1 +1,1 @@
-console.log('Hi, nodemon watcher!');
+import './css/index.css';
