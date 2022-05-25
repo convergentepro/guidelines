@@ -9,11 +9,13 @@
     "private": false,
     "type": "module",
     "scripts": {
-        "start": "nodemon src/main.js",
+        "start": "nodemon --exec babel-node src/main.js",
         "build": "webpack build --progress --mode=production -c webpack.config.js",
         "preview": "vite preview -c vite.config.js",
         "dev": "vite serve --mode=development -c vite.config.js",
-        "sass": "postcss --parser=postcss-scss --watch --verbose src/scss/**/*.scss -o src/css/index.css --use autoprefixer --use cssnano"
+        "sass": "sass --watch src/scss/index.scss:src/css/index.css",
+        "postcss": "postcss --verbose -w src/css/index.css -o src/css/index.css --use=autoprefixer --use=cssnano",
+        "css": "concurrently --kill-others \"npm run sass\" \"npm run postcss\""
     },
     "devDependencies": {
         "@babel/cli": "^7.17.10",
