@@ -1,4 +1,4 @@
-// import "/public/css/index.css";
+import "/public/static/app.css";
 
 export class Usuario {
 	#name = "John";

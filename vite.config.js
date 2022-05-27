@@ -8,6 +8,9 @@ export default defineConfig({
 		chunkSizeWarningLimit: 1000000,
 		cssCodeSplit: true,
 		minify: true,
+		rollupOptions: {
+			external: ["public/static/app.css"],
+		},
 	},
 	base: "/",
 	envPrefix: "VITE_",

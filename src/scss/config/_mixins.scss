@@ -15,7 +15,6 @@
 		"ingrid": inline-grid,
 		"none": none,
 		"table": table,
-		"box": box,
 	);
 
 	@if $classes == true {
@@ -34,43 +33,43 @@
 }
 
 // * FLEXBOX FACTORS: Grow, Shrink and Basis
-@mixin createFlexFactor($bp: "") {
-	@if ($classes == true) {
-		@if ($bp == "") {
-			@for $i from 0 through 10 {
-				.flex-grow-#{$i} {
-					flex-grow: #{$i};
-				}
+// @mixin createFlexFactor($bp: "") {
+// 	@if ($classes == true) {
+// 		@if ($bp == "") {
+// 			@for $i from 0 through 10 {
+// 				.flex-grow-#{$i} {
+// 					flex-grow: #{$i};
+// 				}
 
-				.flex-shrink-#{$i} {
-					flex-shrink: #{$i};
-				}
-			}
+// 				.flex-shrink-#{$i} {
+// 					flex-shrink: #{$i};
+// 				}
+// 			}
 
-			@for $i from 0 through 20 {
-				.flex-basis-#{$i} {
-					flex-basis: calc(100% / #{$i});
-				}
-			}
-		} @else {
-			@for $i from 0 through 10 {
-				.flex-grow-#{$bp}-#{$i} {
-					flex-grow: #{$i};
-				}
+// 			@for $i from 0 through 20 {
+// 				.flex-basis-#{$i} {
+// 					flex-basis: calc(100% / #{$i});
+// 				}
+// 			}
+// 		} @else {
+// 			@for $i from 0 through 10 {
+// 				.flex-grow-#{$bp}-#{$i} {
+// 					flex-grow: #{$i};
+// 				}
 
-				.flex-shrink-#{$bp}-#{$i} {
-					flex-shrink: #{$i};
-				}
-			}
+// 				.flex-shrink-#{$bp}-#{$i} {
+// 					flex-shrink: #{$i};
+// 				}
+// 			}
 
-			@for $i from 0 through 10 {
-				.flex-basis-#{$bp}-#{$i} {
-					flex-basis: calc(100% / #{$i});
-				}
-			}
-		}
-	}
-}
+// 			@for $i from 0 through 10 {
+// 				.flex-basis-#{$bp}-#{$i} {
+// 					flex-basis: calc(100% / #{$i});
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 
 // * FLEXBOX: ALIGNMENTS: items and justify
 @mixin createFlexAlignments($bp: "") {
