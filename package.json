@@ -12,8 +12,7 @@
 		"build": "vite build -c vite.config.js",
 		"clean": "rm -rf public/*; rm -rf dist/*",
 		"gulp": "npm run clean; gulp",
-		"dev": "concurrently --kill-others \"npm run gulp\" \"npm run serve\"",
-		"serve": "vite serve -c vite.config.js"
+		"dev": "concurrently --kill-others \"npm run gulp\" \"npm run serve\""
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.17.10",
@@ -27,7 +26,6 @@
 		"@babel/preset-env": "^7.18.2",
 		"@babel/register": "^7.17.7",
 		"@babel/runtime": "^7.18.3",
-		"@sveltejs/vite-plugin-svelte": "^1.0.0-next.45",
 		"autoprefixer": "^10.4.7",
 		"browser-sync": "^2.27.10",
 		"browserify": "^17.0.0",
@@ -35,27 +33,21 @@
 		"cssnano": "^5.1.9",
 		"dotenv": "^16.0.1",
 		"gulp": "^4.0.2",
-		"gulp-avif": "^1.1.1",
 		"gulp-babel": "^8.0.0",
-		"gulp-browserify": "^0.5.1",
+		"gulp-htmlmin": "^5.0.1",
 		"gulp-imagemin": "^8.0.0",
-		"gulp-notifier": "^1.0.6",
+		"gulp-notify": "^4.0.0",
 		"gulp-plumber": "^1.2.1",
 		"gulp-postcss": "^9.0.1",
 		"gulp-purgecss": "^4.1.3",
-		"gulp-requirejs": "^1.4.0",
 		"gulp-sass": "^5.1.0",
 		"gulp-sourcemaps": "^3.0.0",
 		"gulp-terser": "^2.1.0",
 		"gulp-typescript": "^6.0.0-alpha.1",
-		"gulp-webp": "^4.0.1",
 		"postcss": "^8.4.14",
 		"postcss-cli": "^9.1.0",
-		"postcss-scss": "^4.0.4",
 		"sass": "^1.52.1",
-		"svelte-preprocess": "^4.10.6",
 		"ts-node": "^10.8.0",
-		"typescript": "^4.7.2",
-		"vite": "^2.9.9"
+		"typescript": "^4.7.2"
 	}
 }

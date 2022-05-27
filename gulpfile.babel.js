@@ -13,68 +13,52 @@ import nodesass from "sass";
 const sass = gsass(nodesass);
 
 // SETTINGS:
-let DEVELOPMENT = true;
+let DEVELOPMENT = false;
 server.create();
-// Process CSS & SASS
 
+// Process CSS & SASS
 function cssProcess() {
 	if (DEVELOPMENT === true) {
-		return src("./src/scss/app.scss")
+		return src("src/scss/app.scss")
 			.pipe(plumber())
 			.pipe(maps.init())
 			.pipe(sass())
 			.pipe(postcss([prefixer]))
 			.pipe(maps.write("."))
-			.pipe(dest("./public/"))
-			.pipe(
-				server.stream({
-					once: true,
-					match: "**/*.css",
-				})
-			);
+			.pipe(dest("public/"))
+			.pipe(server.stream());
 	}
 
-	return src("./public/app.css")
-		.pipe(plumber())
-		.pipe(maps.init())
-		.pipe(postcss([cssnano()]))
-		.pipe(maps.write("."))
-		.pipe(dest("dist/"))
-		.pipe(server.stream());
-}
-
-function cssCleaner() {
 	return src("public/app.css")
+		.pipe(plumber())
+		.pipe(postcss([prefixer(), cssnano()]))
 		.pipe(
 			purgecss({
-				content: ["./public/*.html"],
-				output: "./public/*.css",
+				content: ["public/*.html"],
+				output: "public/app.css",
 			})
 		)
-		.pipe(dest("./dist/"));
+		.pipe(dest("dist/"));
 }
 
 function watchFiles() {
-	server.init({
-		watch: true,
-		port: 5000,
-		injectChanges: true,
-		logLevel: "debug",
-		minify: true,
-		notify: true,
-		files: ["./public/*.html", "./public/*.css"],
-		open: false,
-		server: {
-			baseDir: "./public/",
-			index: "./index.html",
-		},
-	});
+	// server.init({
+	// 	watch: true,
+	// 	port: 5000,
+	// 	injectChanges: true,
+	// 	logLevel: "debug",
+	// 	minify: true,
+	// 	notify: true,
+	// 	files: ["./public/*.html", "./public/*.css"],
+	// 	open: false,
+	// 	server: {
+	// 		baseDir: "./public/",
+	// 		index: "./index.html",
+	// 	},
+	// });
 
 	watch("src/scss/**/*.scss", cssProcess);
-	watch("public/*.html", server.reload);
+	// watch("public/*.html", server.reload);
 }
 
-export default series(
-	DEVELOPMENT === true ? watchFiles : cssProcess,
-	cssCleaner
-);
+export default series(cssProcess);
