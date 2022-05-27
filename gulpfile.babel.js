@@ -25,60 +25,56 @@ function cssProcess() {
 			.pipe(sass())
 			.pipe(postcss([prefixer]))
 			.pipe(maps.write("."))
-			.pipe(dest("./public/static/"))
-			.pipe(server.stream());
+			.pipe(dest("./public/"))
+			.pipe(
+				server.stream({
+					once: true,
+					match: "**/*.css",
+				})
+			);
 	}
 
-	return src("./public/static/app.css")
+	return src("./public/app.css")
 		.pipe(plumber())
 		.pipe(maps.init())
 		.pipe(postcss([cssnano()]))
 		.pipe(maps.write("."))
-		.pipe(dest("dist/static/"));
+		.pipe(dest("dist/"))
+		.pipe(server.stream());
 }
 
 function cssCleaner() {
-	return src("public/static/app.css")
+	return src("public/app.css")
 		.pipe(
 			purgecss({
-				content: ["./*.html", "./public/*.html"],
+				content: ["./public/*.html"],
+				output: "./public/*.css",
 			})
 		)
 		.pipe(dest("./dist/"));
 }
 
-function htmlprocess() {
-	return src("./index.html")
-		.pipe(plumber())
-		.pipe(dest("./public/"))
-		.pipe(server.stream());
-}
-
 function watchFiles() {
 	server.init({
 		watch: true,
-		port: 4000,
+		port: 5000,
 		injectChanges: true,
-		logConnections: true,
-		logLevel: "info",
-		serveStatic: ["./public"],
-		browser: "brave",
-		minify: DEVELOPMENT ? false : true,
+		logLevel: "debug",
+		minify: true,
 		notify: true,
+		files: ["./public/*.html", "./public/*.css"],
 		open: false,
-		startPath: "/",
 		server: {
-			baseDir: "./",
+			baseDir: "./public/",
 			index: "./index.html",
 		},
 	});
 
 	watch("src/scss/**/*.scss", cssProcess);
-	watch(["public/*.html", "./index.html"], htmlprocess);
+	watch("public/*.html", server.reload);
 }
 
 export default series(
 	DEVELOPMENT === true ? watchFiles : cssProcess,
-	htmlprocess,
 	cssCleaner
 );
