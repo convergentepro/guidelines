@@ -3,13 +3,13 @@
 import prefixer from "autoprefixer";
 import { dest, series, src, watch } from "gulp";
 import babel from "gulp-babel";
+import notifier from "gulp-notifier";
 import plumber from "gulp-plumber";
 // CSS & SASS:
 import postcss from "gulp-postcss";
 import gsass from "gulp-sass";
 import sourcemaps from "gulp-sourcemaps";
 import nodesass from "sass";
-
 const sass = gsass(nodesass);
 
 //----------------------------------------------------------------
@@ -18,13 +18,14 @@ const sass = gsass(nodesass);
 
 // Processing Sass and Css Files:
 function css() {
-	return src("src/scss/index.scss")
+	return src("src/scss/app.scss")
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(sass())
 		.pipe(postcss([prefixer()]))
 		.pipe(sourcemaps.write("."))
-		.pipe(dest("public/css"));
+		.pipe(dest("public/css"))
+		.pipe(notifier.success("CSS and SASS task is done!"));
 }
 
 function js() {
@@ -48,4 +49,4 @@ function dev() {
 	watch("src/**/*.{js,ts,jsx,tsx}", js);
 }
 
-export default series(js, css);
+export default series(css, dev);

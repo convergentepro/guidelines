@@ -1,826 +1,627 @@
-// * Breakpoints MQ:
+@use "sass:math";
+
+//----------------------------------------------------------------
+// ? LAYOUTS UTILS:
+
+// * Layout Displays:
+@mixin createDisplay($bp: "") {
+	$displays: (
+		"inline": inline,
+		"inblock": inline-block,
+		"block": block,
+		"flex": flex,
+		"inflex": inline-flex,
+		"grid": grid,
+		"ingrid": inline-grid,
+		"none": none,
+		"table": table,
+		"box": box,
+	);
+
+	@if $classes == true {
+		@each $k, $v in $displays {
+			@if $bp== "" {
+				.d-#{$k} {
+					display: #{$v};
+				}
+			} @else {
+				.d-#{$bp}-#{$k} {
+					display: #{$v};
+				}
+			}
+		}
+	}
+}
+
+// * FLEXBOX FACTORS: Grow, Shrink and Basis
+@mixin createFlexFactor($bp: "") {
+	@if ($classes == true) {
+		@if ($bp == "") {
+			@for $i from 0 through 10 {
+				.flex-grow-#{$i} {
+					flex-grow: #{$i};
+				}
+
+				.flex-shrink-#{$i} {
+					flex-shrink: #{$i};
+				}
+			}
+
+			@for $i from 0 through 20 {
+				.flex-basis-#{$i} {
+					flex-basis: calc(100% / #{$i});
+				}
+			}
+		} @else {
+			@for $i from 0 through 10 {
+				.flex-grow-#{$bp}-#{$i} {
+					flex-grow: #{$i};
+				}
+
+				.flex-shrink-#{$bp}-#{$i} {
+					flex-shrink: #{$i};
+				}
+			}
+
+			@for $i from 0 through 10 {
+				.flex-basis-#{$bp}-#{$i} {
+					flex-basis: calc(100% / #{$i});
+				}
+			}
+		}
+	}
+}
+
+// * FLEXBOX: ALIGNMENTS: items and justify
+@mixin createFlexAlignments($bp: "") {
+	$alignItems: (
+		"start": flex-start,
+		"end": flex-end,
+		"center": center,
+		"baseline": baseline,
+		"stretch": stretch,
+	);
+
+	$justifyContent: (
+		"start": flex-start,
+		"end": flex-end,
+		"center": center,
+		"around": space-around,
+		"between": space-between,
+		"evenly": space-evenly,
+	);
+
+	@if $classes == true {
+		@if ($items == true) {
+			@each $k, $v in $alignItems {
+				@if ($bp == "") {
+					.items-#{$k} {
+						align-items: #{$v};
+					}
+				} @else {
+					.items-#{$bp}-#{$k} {
+						align-items: #{$v};
+					}
+				}
+			}
+		}
+
+		@if ($justify == true) {
+			@each $k, $v in $justifyContent {
+				@if ($bp == "") {
+					.justify-#{$k} {
+						justify-content: #{$v};
+					}
+				} @else {
+					.justify-#{$k}-#{$bp} {
+						justify-content: #{$v};
+					}
+				}
+			}
+		}
+	}
+}
+
+// * FLEXBOX: WORKFLOWS: Direction and Wraps
+@mixin createFlexFlows($bp: "") {
+	$flexDirections: (
+		"row": row,
+		"row-reverse": row-reverse,
+		"column": column,
+		"column-reverse": column-reverse,
+	);
+
+	$flexWraps: (
+		"wrap": wrap,
+		"wrap-reverse": wrap-reverse,
+		"nowrap": nowrap,
+	);
+
+	@if ($classes == true) {
+		@if ($bp == "") {
+			@each $k, $v in $flexDirections {
+				.flex-#{$k} {
+					flex-direction: #{$v};
+				}
+			}
+
+			@each $k, $v in $flexWraps {
+				.flex-#{$k} {
+					flex-wrap: #{$v};
+				}
+			}
+		} @else {
+			@each $k, $v in $flexDirections {
+				.flex-#{$bp}-#{$k} {
+					flex-direction: #{$v};
+				}
+			}
+
+			@each $k, $v in $flexWraps {
+				.flex-#{$bp}-#{$k} {
+					flex-wrap: #{$v};
+				}
+			}
+		}
+	}
+}
+
+// * FLEXBOX ORDERING:
+@mixin createFlexOrdering($bp: "", $negative: true) {
+	@if ($classes == true) {
+		@if ($bp == "") {
+			@for $i from 1 through 10 {
+				@if ($negative == true) {
+					.order_#{$i} {
+						order: -#{$i};
+					}
+				} @else {
+					.order-#{$i} {
+						order: #{$i};
+					}
+				}
+			}
+		} @else {
+			@for $i from 1 through 10 {
+				@if ($negative == true) {
+					.order_#{$bp}#{$i} {
+						order: -#{$i};
+					}
+				} @else {
+					.order-#{$bp}-#{$i} {
+						order: #{$i};
+					}
+				}
+			}
+		}
+	}
+}
+
+// * FLEXBOX: COLUMN GRID SYSTEM:
+@mixin createFlexColumnsGrid($bp: "", $columns, $gutter) {
+	@if ($classes == true) {
+		@for $i from 1 through $columns {
+			@if ($bp == "") {
+				.flex-col-#{$i} {
+					flex: 0 0 #{math.div($i, $columns) * 100%};
+					max-width: #{math.div($i, $columns) * 100%};
+					padding-left: math.div($gutter, 2);
+					padding-right: math.div($gutter, 2);
+				}
+			} @else {
+				.flex-col-#{$bp}-#{$i} {
+					flex: 0 0 #{math.div($i, $columns) * 100%};
+					max-width: #{math.div($i, $columns) * 100%};
+					padding-left: math.div($gutter, 2);
+					padding-right: math.div($gutter, 2);
+				}
+			}
+		}
+	}
+}
+
+//----------------------------------------------------------------
+// ? GRIDBOX UTILS:
+
+// * GRID TEMPLATE PROPS: Columns, Rows and Auto Cols & Rows
+@mixin createGridTemplates($bp: "") {
+	@if ($classes == true) {
+		@if ($bp == "") {
+			@for $i from 1 through 12 {
+				.grid-cols-#{$i} {
+					grid-template-columns: repeat($i, minmax(auto, 1fr));
+				}
+				.grid-rows-#{$i} {
+					grid-template-rows: repeat($i, minmax(auto, 1fr));
+				}
+
+				.grid-autocols-#{$i} {
+					grid-auto-columns: #{$i * 1fr};
+				}
+
+				.grid-autorows-#{$i} {
+					grid-auto-rows: #{$i * 1fr};
+				}
+			}
+		} @else {
+			@for $i from 1 through 12 {
+				.grid-cols-#{$bp}-#{$i} {
+					grid-template-columns: repeat($i, minmax(auto, 1fr));
+				}
+				.grid-rows-#{$bp}-#{$i} {
+					grid-template-rows: repeat($i, 1fr);
+				}
+
+				.grid-autocols-#{$bp}-#{$i} {
+					grid-auto-columns: #{$i * 1fr};
+				}
+
+				.grid-autorows-#{$bp}-#{$i} {
+					grid-auto-rows: #{$i * 1fr};
+				}
+			}
+		}
+	}
+}
+
+// * GRID SPREADING PROPS: Start and End Cols and Rows:
+@mixin createGridSpans($bp: "") {
+	@if ($classes == true) {
+		@if ($bp == "") {
+			@for $i from 1 through 12 {
+				.grid-colstart-#{$i} {
+					grid-column-start: #{$i};
+				}
+
+				.grid-colend-#{$i} {
+					grid-column-end: #{$i};
+				}
+
+				.grid-rowstart-#{$i} {
+					grid-row-start: #{$i};
+				}
+
+				.grid-rowend-#{$i} {
+					grid-row-end: #{$i};
+				}
+			}
+		} @else {
+			@for $i from 1 through 12 {
+				.grid-colstart-#{$bp}-#{$i} {
+					grid-column-start: #{$i};
+				}
+
+				.grid-colend-#{$bp}-#{$i} {
+					grid-column-end: #{$i};
+				}
+
+				.grid-rowstart-#{$bp}-#{$i} {
+					grid-row-start: #{$i};
+				}
+
+				.grid-rowend-#{$bp}-#{$i} {
+					grid-row-end: #{$i};
+				}
+			}
+		}
+	}
+}
+
+// * GRID GAPS MEASURES: Cols and Rows Gutter:
+@mixin createGridGutters($bp: "") {
+	@if ($class == true) {
+		@if ($bp == "") {
+			@for $i from 1 through 100 {
+				.gap-col-#{$i} {
+					column-gap: #{$i * 1px};
+				}
+
+				.gap-row-#{$i} {
+					row-gap: #{$i * 1px};
+				}
+			}
+		} @else {
+			.gap-col-#{$bp}-#{$i} {
+				column-gap: #{$i * 1px};
+			}
+
+			.gap-row-#{$bp}-#{$i} {
+				row-gap: #{$i * 1px};
+			}
+		}
+	}
+}
+
+//----------------------------------------------------------------
+// ? THEMES UTILS:
+
+// * FONT FAMILIES UTILS:
+@mixin createFontFamilies($bp: "") {
+	$font-families: (
+		"display": '"Jost", sans-serif',
+		"serif": '"Lora", serif',
+		"code": '"Source Code Pro", monospace',
+	);
+
+	@if ($classes == true) {
+		@if ($bp == "") {
+			@each $k, $family in $font-families {
+				.ff-#{$k} {
+					font-family: #{$family};
+				}
+			}
+		} @else {
+			@each $k, $family in $font-families {
+				.ff-#{$bp}-#{$k} {
+					font-family: #{$family};
+				}
+			}
+		}
+	}
+}
+
+// * FONT SIZES MEASURES:
+@mixin createFontSizes($bp: "") {
+	@if ($classes == true) {
+		@for $size from 0 through 72 {
+			@if ($bp == "") {
+				.fz-#{$size} {
+					font-size: #{$size * 0.5 * 0.2 * 1rem};
+				}
+			} @else {
+				.fz-#{$bp}-#{$size} {
+					font-size: #{$size * 0.5 * 0.2 * 1rem};
+				}
+			}
+		}
+	}
+}
+
+// * FONT WEIGHT MEASURES:
+@mixin createFontWeights($bp: "") {
+	@if ($classes == true) {
+		@for $i from 1 to 10 {
+			@if ($bp == "") {
+				.fw-#{$i * 100} {
+					font-weight: #{$i * 100};
+				}
+			} @else {
+				.fw-#{$bp}-#{$i * 100} {
+					font-weight: #{$i * 100};
+				}
+			}
+		}
+	}
+}
+
+// * LINEHEIGHTS MEASURES:
+@mixin createLineheights($bp: "") {
+	$line-heights: (
+		"none": 0,
+		"100": 1,
+		"133": 1.33,
+		"155": 1.55,
+		"177": 1.77,
+		"200": 2,
+		"233": 2.33,
+		"255": 2.55,
+		"277": 2.77,
+		"300": 3,
+	);
+
+	@if ($classes == true) {
+		@each $k, $v in $line-heights {
+			@if ($bp == "") {
+				.lh-#{$k} {
+					line-height: #{$v};
+				}
+			} @else {
+				.lh-#{$bp}-#{$k} {
+					line-height: #{$v};
+				}
+			}
+		}
+	}
+}
+
+// * TEXT PROPS AND LIST STYLES:
+@mixin createTextProps($bp: "") {
+	$text-aligns: (
+		"left": left,
+		"center": center,
+		"right": right,
+		"justify": justify,
+		"none": none,
+	);
+	$text-decorations: (
+		"none": none,
+		"underline": underline,
+		"overline": overline,
+		"line-through": line-through,
+	);
+	$text-transforms: (
+		"none": none,
+		"uppercase": uppercase,
+		"lowercase": lowercase,
+		"capitalize": capitalize,
+	);
+	$list-styles: (
+		"none": none,
+		"circle": circle,
+		"decimal": decimal,
+		"decimal-zero": decimal-leading-zero,
+		"upper-alpha": upper-alpha,
+		"lower-alpha": lower-alpha,
+		"upper-roman": upper-alpha,
+		"lower-roman": lower-alpha,
+		"square": square,
+	);
+
+	@if ($classes == true) {
+		@each $k, $v in $text-aligns {
+			@if ($bp == "") {
+				@if ($k == "none") {
+					.ta-none {
+						text-align: none;
+					}
+				} @else {
+					.text-#{$k} {
+						text-align: #{$v};
+					}
+				}
+			} @else {
+				@if ($k == "none") {
+					.ta-#{$bp}-none {
+						text-align: none;
+					}
+				} @else {
+					.text-#{$bp}-#{$k} {
+						text-align: #{$v};
+					}
+				}
+			}
+		}
+
+		@each $k, $v in $text-decorations {
+			@if ($bp == "") {
+				@if ($k == "none") {
+					.tde-none {
+						text-decoration: none;
+					}
+				} @else {
+					.text-#{$k} {
+						text-decoration: #{$v};
+					}
+				}
+			} @else {
+				@if ($k == "none") {
+					.tde-#{$bp}-none {
+						text-decoration: none;
+					}
+				} @else {
+					.text-#{$bp}-#{$k} {
+						text-decoration: #{$v};
+					}
+				}
+			}
+		}
+
+		@each $k, $v in $text-transforms {
+			@if ($bp == "") {
+				@if ($k == "none") {
+					.ttr-none {
+						text-transform: none;
+					}
+				} @else {
+					.text-#{$k} {
+						text-transform: #{$v};
+					}
+				}
+			} @else {
+				@if ($k == "none") {
+					.ttr-#{$bp}-none {
+						text-transform: none;
+					}
+				} @else {
+					.text-#{$bp}-#{$k} {
+						text-transform: #{$v};
+					}
+				}
+			}
+		}
+
+		@each $k, $v in $list-styles {
+			@if ($bp == "") {
+				@if ($k == "none") {
+					.list-style-none {
+						list-style: none;
+					}
+				} @else {
+					.list-#{$k} {
+						list-style: #{$v};
+					}
+				}
+			} @else {
+				@if ($k == "none") {
+					.list-style-#{$bp}-none {
+						list-style: none;
+					}
+				} @else {
+					.list-#{$bp}-#{$k} {
+						list-style: #{$v};
+					}
+				}
+			}
+		}
+	}
+}
+
+// * BRAND COLORS: BkgColor, TextColor and HoverColors:
+@mixin createThemeColors($bp: "") {
+	$brandColors: (
+		"current": currentColor,
+		"alpha": transparent,
+		"none": none,
+		"indigo": #3d14b8,
+		"salmon": #ff6347,
+		"teal": #0e8181,
+		"persian": #071f40,
+		"success": #18dc7a,
+		"danger": #e6192a,
+		"warning": #f2d40d,
+		"info": #1991e6,
+		"gray100": #d7d6dc,
+		"gray200": #9da4af,
+		"gray300": #878a92,
+		"gray400": #3e3b45,
+		"light": #f0f0f0,
+		"dark": #1c1c22,
+	);
+
+	@if ($classes == true) {
+		@if ($bp == "") {
+			@each $k, $v in $brandColors {
+				.bg-#{$k} {
+					background-color: #{$v};
+				}
+				.bg-hover-#{$k}:hover {
+					background-color: #{$v};
+				}
+				.color-#{$k} {
+					color: #{$v};
+				}
+				.color-hover-#{$k}:hover {
+					color: #{$v};
+				}
+			}
+		} @else {
+			@each $k, $v in $brandColors {
+				.bg-#{$bp}-#{$k} {
+					background-color: #{$v};
+				}
+				.bg-hover-#{$bp}-#{$k}:hover {
+					background-color: #{$v};
+				}
+				.color-#{$bp}-#{$k} {
+					color: #{$v};
+				}
+				.color-hover-#{$bp}-#{$k}:hover {
+					color: #{$v};
+				}
+			}
+		}
+	}
+}
+
+// * BREAKPOINTS AND MEDIA QUERIES SIZES:
 @mixin media-up($device) {
-    @media screen and (min-width: map-get($breakpoints, #{$device})) {
-        @content;
-    }
+	@media screen and (min-width: map-get($breakpoints, #{$device})) {
+		@content;
+	}
 }
 
 @mixin media-down($device) {
-    @media screen and (max-width: map-get($breakpoints, #{$device})) {
-        @content;
-    }
+	@media screen and (max-width: map-get($breakpoints, #{$device})) {
+		@content;
+	}
 }
-
-// * Layout Displays:
-@mixin createDisplay($bp: '', $map: $displays) {
-    @if $classes==true {
-        @each $k in $map {
-            @if $bp=='' {
-                .d-#{$k} {
-                    display: #{$k};
-                }
-            }
-
-            @else {
-                .d-#{$k}-#{$bp} {
-                    display: #{$k};
-                }
-            }
-        }
-    }
-}
-
-// * Responsive Grid Columns with Flexbox (12 columns): :
-@mixin createFlexColumnsGrid($bp: '', $columns, $gutter) {
-    @if $classes==true {
-        @for $i from 1 through $columns {
-            @if $bp=='' {
-                .col-#{$i} {
-                    flex: 0 0 #{$i / $columns * 100%};
-                    max-width: #{$i / $columns * 100%};
-                    padding-left: $gutter / 2;
-                    padding-right: $gutter / 2;
-                }
-            }
-
-            @else {
-                .col-#{$i}-#{$bp} {
-                    flex: 0 0 #{$i / $columns * 100%};
-                    max-width: #{$i / $columns * 100%};
-                    padding-left: $gutter / 2;
-                    padding-right: $gutter / 2;
-                }
-            }
-        }
-    }
-}
-
-// * Columns Alignment: Vertically and Horizontally:
-@mixin createFlexAlignments($bp: '', $alignX, $alignY) {
-    @if $classes==true {
-        @if ($alignY==true) {
-
-            @each $k,
-            $v in $flexAlignItems {
-                @if $bp=='' {
-                    .items-#{$k} {
-                        align-items: #{$v};
-                    }
-                }
-
-                @else {
-                    .items-#{$k}-#{$bp} {
-                        align-items: #{$v};
-                    }
-                }
-            }
-        }
-
-        @if $alignX==true {
-
-            @each $k,
-            $v in $flexJustifyContent {
-                @if $bp=='' {
-                    .justify-#{$k} {
-                        justify-content: #{$v};
-                    }
-                }
-
-                @else {
-                    .justify-#{$k}-#{$bp} {
-                        justify-content: #{$v};
-                    }
-                }
-            }
-        }
-    }
-}
-
-// * Flex Flows: row, column, wrap, wrap-reverse
-@mixin createFlexFlows($bp: '') {
-    @if $classes==true {
-        @if $bp=='' {
-
-            @each $k,
-            $v in $flexDirectionMap {
-                .flex-#{$k} {
-                    flex-direction: #{$v};
-                }
-            }
-
-            @each $k,
-            $v in $flexWrapperMap {
-                .flex-#{$k} {
-                    flex-wrap: #{$v};
-                }
-            }
-        }
-
-        @else {
-
-            @each $k,
-            $v in $flexDirectionMap {
-                .flex-#{$k}-#{$bp} {
-                    flex-direction: #{$v};
-                }
-            }
-
-            @each $k,
-            $v in $flexWrapperMap {
-                .flex-#{$k}-#{$bp} {
-                    flex-wrap: #{$v};
-                }
-            }
-        }
-
-    }
-}
-
-
-
-
-// * Flex props: flex-grow, flex-shrink, flex-basis
-@mixin createFlexFactor($bp: '') {
-
-    @if $classes==true {
-        @if $bp=='' {
-            @for $i from 0 through 10 {
-                .flex-grow-#{$i} {
-                    flex-grow: #{$i};
-                }
-
-                .flex-shrink-#{$i} {
-                    flex-shrink: #{$i};
-                }
-            }
-
-
-            @for $i from 0 through 20 {
-                .flex-basis-#{$i} {
-                    flex-basis: calc(100% / #{$i});
-                }
-            }
-        }
-
-        @else {
-            @for $i from 0 through 10 {
-                .flex-grow-#{$i}-#{$bp} {
-                    flex-grow: #{$i};
-                }
-
-                .flex-shrink-#{$i}-#{$bp} {
-                    flex-shrink: #{$i};
-                }
-            }
-
-
-            @for $i from 0 through 10 {
-                .flex-basis-#{$i}-#{$bp} {
-                    flex-basis: calc(100% / $i);
-                }
-            }
-        }
-    }
-
-}
-
-
-// * Grid Auto Columns and Rows:
-@mixin createGridTemplates($bp: '', $columns: true, $rows: true) {
-    @if $classes==true {
-        @if $columns==true {
-            @if $bp=='' {
-
-                @for $i from 1 through 12 {
-                    .grid-cols-#{$i} {
-                        grid-template-columns: repeat($i, 1fr);
-                    }
-                }
-            }
-
-            @else {
-                @for $i from 1 through 12 {
-                    .grid-cols-#{$i}-#{$bp} {
-                        grid-template-columns: repeat($i, 1fr);
-                    }
-                }
-            }
-        }
-
-        @if $rows==true {
-            @if $bp=='' {
-
-                @for $i from 1 through 12 {
-                    .grid-rows-#{$i} {
-                        grid-template-rows: repeat($i, 1fr);
-                    }
-                }
-            }
-
-            @else {
-                @for $i from 1 through 12 {
-                    .grid-rows-#{$i}-#{$bp} {
-                        grid-template-rows: repeat($i, 1fr);
-                    }
-                }
-            }
-        }
-    }
-}
-
-
-// * Create Grid Column and Row Span: Spread
-// @mixin createGridSpreading($isColumn, $isRow) {
-// 	@for $i from 1 through 12 {
-// 		@if $isColumn == true {
-// 			.col-start-#{$i} {
-// 				grid-column-start: #{$i};
-// 			}
-
-// 			.col-end-#{$i} {
-// 				grid-column-end: #{$i};
-// 			}
-// 		}
-
-// 		@if $isRow == true {
-// 			.row-start-#{$i} {
-// 				grid-row-start: #{$i};
-// 			}
-
-// 			.row-end-#{$i} {
-// 				grid-row-end: #{$i};
-// 			}
-// 		}
-// 	}
-// }
-
-// * Generate Grid Gaps with Pixeles Units:
-// @mixin createGridGutters($isGutter: true) {
-// 	@for $i from 1 through 100 {
-// 		.gutter-#{$i} {
-// 			gap: #{$i * 1px};
-// 		}
-// 	}
-// }
-
-// Create Order props for flex-items and grid-items
-// @mixin createOrderFlex($isNegative: true) {
-// 	@if $isNegative == true {
-// 		@for $i from 1 through 10 {
-// 			.order_#{$i} {
-// 				order: -#{$i};
-// 			}
-// 		}
-// 	} @else {
-// 		@for $i from 0 through 10 {
-// 			.order-#{$i} {
-// 				order: #{$i};
-// 			}
-// 		}
-// 	}
-// }
-
-//----------------------------------------------------------------
-// ? THEMES MIXINS:
-//----------------------------------------------------------------
-
-// Create background-color and colors Mixins:
-// @mixin themeColorsPalette($map: $brandColors, $hasTextColor: true) {
-// 	@if ($enableClasses == true) {
-// 		@each $k, $v in $map {
-// 			$values: map-get($map, #{$k});
-// 			@if $hasTextColor == true {
-// 				.color-#{$k} {
-// 					color: #{$values};
-// 				}
-// 			} @else {
-// 				.bg-#{$k} {
-// 					background-color: #{$values};
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-
-// Create Font Families Mixin and Classes:
-// @mixin createFontFamily($map: $fontFamilies) {
-// 	@each $k, $family in $map {
-// 		.font-#{$k} {
-// 			font-family: #{$family};
-// 		}
-// 	}
-// }
-
-// Create Fontsizes Mixin and Classes:
-// @mixin createFontSizes($size) {
-// 	@each $k, $size in $fontSizes {
-// 		.fz-#{$k} {
-// 			font-size: UnitConvert(#{$size});
-// 		}
-// 	}
-// }
-
-// Create Font weight Mixin and Classes:
-// @mixin createFontWeight($map: $fontWeights) {
-// 	@each $k, $weight in $map {
-// 		.fw-#{$k} {
-// 			font-weight: #{$weight};
-// 		}
-// 	}
-
-// 	@for $weight from 1 to 10 {
-// 		.fw-#{$weight * 100} {
-// 			font-weight: #{$weight * 100};
-// 		}
-// 	}
-// }
-
-// Create Line Heights Mixin and Classes:
-// @mixin createLineHeight($map: $lineHeights, $size) {
-// 	@each $k, $size in $map {
-// 		.lh-#{$k} {
-// 			line-height: #{$size};
-// 		}
-// 	}
-// }
-
-// Text Props Mixin and Classes: align, decoration and transform:
-// @mixin createTextProps($talign: true, $tdecoration: true, $ttransform: true) {
-// 	.ta-none {
-// 		text-align: none;
-// 	}
-// 	@if $talign == true {
-// 		@each $k in $textAlignments {
-// 			.text-#{$k} {
-// 				text-align: #{$k};
-// 			}
-// 		}
-// 	}
-
-// 	.td-none {
-// 		text-decoration: none;
-// 	}
-// 	@if $tdecoration == true {
-// 		@each $k in $textDecorations {
-// 			.text-#{$k} {
-// 				text-decoration: #{$k};
-// 			}
-// 		}
-// 	}
-
-// 	.tt-none {
-// 		text-transform: none;
-// 	}
-
-// 	@if $ttransform == true {
-// 		@each $k in $textTransforms {
-// 			.text-#{$k} {
-// 				text-transform: #{$k};
-// 			}
-// 		}
-// 	}
-// }
-
-//----------------------------------------------------------------
-// ? UTILITIES MIXINS:
-//----------------------------------------------------------------
-
-// Create aspect ratios props and values:
-// @mixin aspectRatios($ratioProp, $ratioValue) {
-// 	$map: $ratiosMap;
-
-// 	@if $ratioProp and $ratioValue == '' {
-// 		@each $k, $ratio in $map {
-// 			.ratio-#{$k} {
-// 				aspect-ratio: #{$ratio};
-// 			}
-// 		}
-// 	} @else {
-// 		.ratio-#{$ratioProp} {
-// 			aspect-ratio: #{$ratioValue};
-// 		}
-// 	}
-// }
-
-// Create list styles types Mixin and Classes:
-// @mixin listBullets($map: $listBullets) {
-// 	@each $k in $map {
-// 		.bullet-#{$k} {
-// 			list-style: #{$k};
-// 		}
-// 	}
-// }
-
-// Create Positions with Breakpoints MQ:
-// @mixin createPosition($map: $positions) {
-//     @if $classes == true {
-//         @each $k in $positions {
-//             .#{$k} {
-//                 position: #{$k};
-//             }
-//         }
-//     }
-// }
-
-// Create Border Radius Classes:
-// @mixin createRadius($side: '') {
-//     $map: $radiusMap;
-
-//     @if $side == '' {
-//         @each $k, $radius in $map {
-//             .radius-#{$k} {
-//                 border-radius: #{$radius};
-//             }
-//         }
-//     }
-
-//     @if $side == 'bottom-x' {
-//         @each $k, $radius in $map {
-//             .radius-bottomRight-#{$k} {
-//                 border-bottom-right-radius: #{$radius};
-//             }
-
-//             .radius-bottomLeft-#{$k} {
-//                 border-bottom-left-radius: #{$radius};
-//             }
-//         }
-//     }
-
-//     @if $side == 'top-x' {
-//         @each $k, $radius in $map {
-//             .radius-topRight-#{$k} {
-//                 border-top-right-radius: #{$radius};
-//             }
-
-//             .radius-topLeft-#{$k} {
-//                 border-top-left-radius: #{$radius};
-//             }
-//         }
-//     }
-// }
-
-// Create some Effects Utilities Classes:
-// @mixin createEffects(
-//     $cursor: true,
-//     $overflow: true,
-//     $resize: true,
-//     $visibility: true
-// ) {
-//     @if $cursor == true {
-//         @each $k in $cursorsMap {
-//             .cursor-#{$k} {
-//                 cursor: #{$k};
-//             }
-//         }
-//     }
-
-//     @if $overflow == true {
-//         @each $k in $overflows {
-//             .flow-#{$k} {
-//                 overflow: #{$k};
-//             }
-
-//             .flow-x-#{$k} {
-//                 overflow-x: #{$k};
-//             }
-
-//             .flow-y-#{$k} {
-//                 overflow-y: #{$k};
-//             }
-//         }
-//     }
-
-//     @if $resize == true {
-//         @each $k in $resizesMap {
-//             .resize-#{$k} {
-//                 resize: #{$k};
-//             }
-//         }
-//     }
-
-//     @if $visibility == true {
-//         @each $k in $visibilityMap {
-//             @if $k == visible {
-//                 .visible {
-//                     visibility: visible;
-//                 }
-//             } @else {
-//                 .visible-#{$k} {
-//                     visibility: #{$k};
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// * Create spacing with Paddings and Margins, and Sizes with Width and Heights:
-
-// @mixin createMeasuresAndSpacing(
-//     $margin: true,
-//     $padding: true,
-//     $width: true,
-//     $height: true
-// ) {
-//     @if $padding == true {
-//         .px-auto {
-//             padding-left: auto;
-//             padding-right: auto;
-//         }
-
-//         .py-auto {
-//             padding-top: auto;
-//             padding-bottom: auto;
-//         }
-
-//         .px-0 {
-//             padding-left: 0;
-//             padding-right: 0;
-//         }
-
-//         .py-0 {
-//             padding-top: 0;
-//             padding-bottom: 0;
-//         }
-
-//         @each $k, $v in $sidesMap {
-//             .p#{$k}-auto {
-//                 padding-#{$v}: auto;
-//             }
-
-//             .p#{$k}-0 {
-//                 padding-#{$v}: 0;
-//             }
-
-//             @for $size from 1 to 100 {
-//                 .p#{$k}-#{$size} {
-//                     padding-#{map-get($sidesMap, #{$k})}: #{$size * 1px};
-//                 }
-
-//                 .px-#{$size} {
-//                     padding-#{map-get($sidesMap, 'l')}: #{$size * 1px};
-//                     padding-#{map-get($sidesMap, 'r')}: #{$size * 1px};
-//                 }
-
-//                 .py-#{$size} {
-//                     padding-#{map-get($sidesMap, 't')}: #{$size * 1px};
-//                     padding-#{map-get($sidesMap, 'b')}: #{$size * 1px};
-//                 }
-//             }
-//         }
-//     }
-
-//     @if $margin == true {
-//         .mx-auto {
-//             margin-left: auto;
-//             margin-right: auto;
-//         }
-
-//         .my-auto {
-//             margin-top: auto;
-//             margin-bottom: auto;
-//         }
-
-//         .mx-0 {
-//             margin-left: 0;
-//             margin-right: 0;
-//         }
-
-//         .my-0 {
-//             margin-top: 0;
-//             margin-bottom: 0;
-//         }
-//         @each $k, $v in $sidesMap {
-//             .m#{$k}-auto {
-//                 margin-#{$v}: auto;
-//             }
-//             .m#{$k}-0 {
-//                 margin-#{$v}: 0;
-//             }
-//             @for $size from 0 to 100 {
-//                 .m#{$k}-#{$size} {
-//                     margin-#{map-get($sidesMap, #{$k})}: #{$size * 1px};
-//                 }
-
-//                 .mx-#{$size} {
-//                     margin-#{map-get($sidesMap, 'l')}: #{$size * 1px};
-//                     margin-#{map-get($sidesMap, 'r')}: #{$size * 1px};
-//                 }
-
-//                 .my-#{$size} {
-//                     margin-#{map-get($sidesMap, 't')}: #{$size * 1px};
-//                     margin-#{map-get($sidesMap, 'b')}: #{$size * 1px};
-//                 }
-//             }
-//         }
-//     }
-
-//     @if $width == true {
-//         .w-auto {
-//             width: auto;
-//         }
-
-//         .max-w-auto {
-//             max-width: auto;
-//         }
-
-//         .min-w-auto {
-//             min-width: auto;
-//         }
-
-//         .w-min-content {
-//             width: min-content;
-//         }
-
-//         .w-max-content {
-//             width: max-content;
-//         }
-
-//         .w-fill-content {
-//             width: fill-content;
-//         }
-
-//         .w-screen {
-//             width: 100vw;
-//         }
-
-//         .max-w-screen {
-//             max-width: 100vw;
-//         }
-
-//         .min-w-screen {
-//             min-width: 100vw;
-//         }
-//         .w-full {
-//             width: 100%;
-//         }
-
-//         .max-w-full {
-//             max-width: 100%;
-//         }
-
-//         .min-w-full {
-//             min-width: 100%;
-//         }
-
-//         @for $size from 1 through 99 {
-//             .w-#{$size} {
-//                 width: #{$size * 1px};
-//             }
-
-//             .max-w-#{$size} {
-//                 max-width: #{$size * 1px};
-//             }
-
-//             .min-w-#{$size} {
-//                 min-width: #{$size * 1px};
-//             }
-//         }
-//     }
-
-//     @if $height == true {
-//         .h-auto {
-//             height: auto;
-//         }
-
-//         .max-h-auto {
-//             max-height: auto;
-//         }
-
-//         .min-h-auto {
-//             min-height: auto;
-//         }
-
-//         .h-min-content {
-//             height: min-content;
-//         }
-
-//         .h-max-content {
-//             height: max-content;
-//         }
-
-//         .h-fill-content {
-//             height: fill-content;
-//         }
-
-//         .h-screen {
-//             height: 100vh;
-//         }
-//         .h-full {
-//             height: 100%;
-//         }
-
-//         .max-h-screen {
-//             max-height: 100vh;
-//         }
-//         .max-h-full {
-//             max-height: 100%;
-//         }
-
-//         .min-h-screen {
-//             min-height: 100vh;
-//         }
-
-//         .min-h-full {
-//             min-height: 100%;
-//         }
-
-//         @for $size from 1 through 99 {
-//             .h-#{$size} {
-//                 height: #{$size * 1px};
-//             }
-
-//             .max-h-#{$size} {
-//                 max-height: #{$size * 1px};
-//             }
-
-//             .min-h-#{$size} {
-//                 min-height: #{$size * 1px};
-//             }
-//         }
-//     }
-// }
-
-// * Set and Create Gaps (Gutter) spacing at Flex and Grid boxes and container:
-// @mixin createGutterSpacing {
-//     @for $gap from 1 through 100 {
-//         .gutter-#{$gap} {
-//             gap: #{$gap * 1px};
-//         }
-
-//         .gutter-row-#{$gap} {
-//             row-gap: #{$gap * 1px};
-//         }
-
-//         .gutter-col-#{$gap} {
-//             column-gap: #{$gap * 1px};
-//         }
-//     }
-// }
-
-// Buttons props creation:
-// @mixin btnBoxProps($display, $height, $width, $padding) {
-//     display: $display;
-//     height: $height;
-//     padding: $padding;
-//     width: $width;
-// }
-
-// @mixin btnThemeProps(
-//     $bgColorHover,
-//     $colorHover,
-//     $ff,
-//     $fz,
-//     $fw,
-//     $radius,
-//     $border
-// ) {
-//     border-radius: $radius;
-//     font-family: $ff;
-//     font-size: $fz;
-//     font-weight: $fw;
-//     outline: #{$border};
-
-//     &:hover {
-//         background-color: map-get($brandColors, #{$bgColorHover});
-//         color: map-get($brandColors, #{$colorHover});
-//     }
-// }
-
-// * Create Box Shadows Props:
-// @mixin createBoxShadows($x, $y, $blur, $spread, $color, $inset: false) {
-//     @if $inset == true {
-//         box-shadow: $x $y $blur $spread $color inset;
-//     } @else {
-//         box-shadow: $x $y $blur $spread $color;
-//     }
-// }
-
-// Create Height and Width with equal same values:
-// @mixin createEqualWidthHeight($isEqual: true, $h, $w: null) {
-//     @if $isEqual == true {
-//         height: $h;
-//         width: $h;
-//     } @else {
-//         height: $h;
-//         width: $w;
-//     }
-// }
-
-// Create Overlayer positioned absolutelly:
-// @mixin createOverlayer($position, $x, $y) {
-//     .overlayer {
-//         position: $position;
-//         top: $y;
-//         left: $x;
-//         right: $x;
-//         bottom: $y;
-//     }
-// }
-
-// Create Background Image Props without classes:
-// @mixin createBgImgProps($image, $repeat, $position, $size: cover) {
-//     background-image: #{$image};
-//     background-repeat: #{$repeat};
-//     background-position: #{$position};
-//     background-size: #{$size};
-// }

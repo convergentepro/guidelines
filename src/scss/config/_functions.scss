@@ -1,9 +1,0 @@
-@function mixerColor($isLightness, $color, $amount: 10) {
-    $map: $brandColors;
-
-    @if $isLightness == true {
-        @return lighten(map-get($map, #{$color}), #{$amount * 1%});
-    } @else {
-        @return darken(map-get($map, #{$color}), #{$amount * 1%});
-    }
-}

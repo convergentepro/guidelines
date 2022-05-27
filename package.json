@@ -11,8 +11,9 @@
 		"start": "nodemon --exec babel-node src/index.js",
 		"build": "vite build -c vite.config.js",
 		"clean": "rm -rf public/*; rm -rf dist/*",
-		"gulp": "gulp default",
-		"dev": "concurrently --kill-others \"npm run clean\" \"npm run gulp\" \"vite serve -c vite.config.js\""
+		"gulp": "npm run clean; gulp",
+		"dev": "concurrently --kill-others \"npm run gulp\" \"npm run serve\"",
+		"serve": "vite serve -c vite.config.js"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.17.10",
