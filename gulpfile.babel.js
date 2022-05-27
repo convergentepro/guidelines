@@ -5,7 +5,7 @@ import plumber from "gulp-plumber";
 // CSS & SASS:
 import postcss from "gulp-postcss";
 import gsass from "gulp-sass";
-import sourcemaps from "gulp-sourcemaps";
+import maps from "gulp-sourcemaps";
 import nodesass from "sass";
 const sass = gsass(nodesass);
 
@@ -18,16 +18,18 @@ function cssProcess() {
 	if (DEVELOPMENT === true) {
 		return src("./src/scss/app.scss")
 			.pipe(plumber())
-			.pipe(sourcemaps.init())
+			.pipe(maps.init())
 			.pipe(sass())
 			.pipe(postcss([prefixer]))
-			.pipe(sourcemaps.write("."))
+			.pipe(maps.write("."))
 			.pipe(dest("./public/static/"));
 	}
 
 	return src("./public/static/app.css")
 		.pipe(plumber())
+		.pipe(maps.init())
 		.pipe(postcss([cssnano()]))
+		.pipe(maps.write("."))
 		.pipe(dest("dist/static/"));
 }
 
