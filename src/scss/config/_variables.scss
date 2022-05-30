@@ -1,78 +1,42 @@
 // Settings:
 $classes: true !default;
 
-$columns: 12;
-$rows: 6;
-
-//----------------------------------------------------------------
-// ? LAYOUTS UTILS:
-
-// Branding Color Palettes:
-$brandColors: (
-	"current": currentColor,
-	"alpha": transparent,
-	"none": none,
-	"indigo": #3d14b8,
-	"salmon": #ff6347,
-	"teal": #0e8181,
-	"persian": #071f40,
-	"success": #18dc7a,
-	"danger": #e6192a,
-	"warning": #f2d40d,
-	"info": #1991e6,
-	"gray100": #d7d6dc,
-	"gray200": #9da4af,
-	"gray300": #878a92,
-	"gray400": #3e3b45,
-	"light": #f0f0f0,
-	"dark": #1c1c22,
-);
-
 // Breakpoints MQ:
 $breakpoints: (
-	"xs": 0,
-	"sm": 576px,
-	"md": 768px,
-	"lg": 1024px,
-	"xl": 1280px,
-	"xxl": 1440px,
+	'xs': 0,
+	'sm': 576px,
+	'md': 768px,
+	'lg': 1024px,
+	'xl': 1280px,
+	'xxl': 1440px,
 );
 
-//----------------------------------------------------------------
-// ? THEMES: Typography Variables Maps:
-//----------------------------------------------------------------
-
-//----------------------------------------------------------------
-// ? UTILITIES VARIABLES & MAPS:
-//----------------------------------------------------------------
-$borderRadiusBase: 8 !default;
 $positions: (relative, absolute, sticky, fixed, static);
-
 $ratiosMap: (
-	"1-1": "1/1",
-	"16-9": "16/9",
-	"9-16": "9/16",
-	"2-3": "2/3",
-	"3-2": "3/2",
-	"4-3": "4/3",
-	"3-4": "3/4",
-	"5-4": "5/4",
-	"4-5": "4/5",
+	'1-1': '1/1',
+	'16-9': '16/9',
+	'9-16': '9/16',
+	'2-3': '2/3',
+	'3-2': '3/2',
+	'4-3': '4/3',
+	'3-4': '3/4',
+	'5-4': '5/4',
+	'4-5': '4/5',
 );
 
 $radiusMap: (
-	"none": 0,
-	"8": 0.8rem,
-	"10": 1rem,
-	"12": 1.2rem,
-	"16": 1.6rem,
-	"20": 2rem,
-	"24": 2.4rem,
-	"28": 2.8rem,
-	"32": 3.2rem,
-	"48": 4.8rem,
-	"full": 50%,
-	"screen": 100%,
+	'none': 0,
+	'8': 0.8rem,
+	'10': 1rem,
+	'12': 1.2rem,
+	'16': 1.6rem,
+	'20': 2rem,
+	'24': 2.4rem,
+	'28': 2.8rem,
+	'32': 3.2rem,
+	'48': 4.8rem,
+	'full': 50%,
+	'screen': 100%,
 );
 
 // Utilities: Effects CSS:
@@ -90,3 +54,43 @@ $objectFitMap: (auto, cover, contain);
 $resizesMap: (vertical, horizontal, both);
 $overflows: (visible, hidden, scroll, auto, clip);
 $visibilityMap: (visible, hidden, collapse);
+
+//----------------------------------------------------------------
+// ? THEMES UTILITIES & VARIABLES:
+$color-current: currentColor;
+$color-alpha: transparent;
+$color-none: none;
+$primaryIndigo: #3d14b8;
+$secondarySalmon: #ff6347;
+$tertiaryTeal: #0e8181;
+$accentPersian: #071f40;
+$success: #18dc7a;
+$danger: #e6192a;
+$warning: #f2d40d;
+$info: #1991e6;
+$gray100: #d7d6dc;
+$gray200: #9da4af;
+$gray300: #878a92;
+$gray400: #3e3b45;
+$theme-light: #f0f0f0;
+$theme-dark: #1c1c22;
+
+$brandColors: (
+	'current': currentColor,
+	'alpha': transparent,
+	'none': none,
+	'indigo': #3d14b8,
+	'salmon': #ff6347,
+	'teal': #0e8181,
+	'persian': #071f40,
+	'success': #18dc7a,
+	'danger': #e6192a,
+	'warning': #f2d40d,
+	'info': #1991e6,
+	'gray100': #d7d6dc,
+	'gray200': #9da4af,
+	'gray300': #878a92,
+	'gray400': #3e3b45,
+	'light': #f0f0f0,
+	'dark': #1c1c22,
+);
