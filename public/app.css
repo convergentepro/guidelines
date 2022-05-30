@@ -35,7 +35,7 @@ body {
 body {
   font-size: 1.6rem;
   padding: 1.8rem 2rem;
-  background-color: var(--teal);
+  background-color: var(--theme-light);
   color: var(--theme-dark);
   min-height: 100vh;
 }
