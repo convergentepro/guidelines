@@ -1,8 +1,6 @@
-import {config} from 'dotenv';
+import env from 'dotenv'
 
 // Settings:
-config();
+env.config({ path: './.env' })
 
-export const DEVELOPMENT = process.env.VITE_MODE || 'development';
-export const PRODUCTION = !process.env.VITE_MODE || 'production';
-export const PORT = Number(process.env.VITE_PORT) || 8000;
+// NODE ENVIROMENTS:
