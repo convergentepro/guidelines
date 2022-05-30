@@ -10,6 +10,7 @@
 	"scripts": {
 		"start": "npm run clean; gulp",
 		"build": "npm run clean; gulp build",
+		"dev": "concurrently --kill-others \"gulp\" \"gulp serve\"",
 		"clean": "rm -rf public/*.{js,css}"
 	},
 	"devDependencies": {
