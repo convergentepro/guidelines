@@ -8,9 +8,9 @@
 	"license": "MIT",
 	"private": false,
 	"scripts": {
-		"start": "gulp",
+		"start": "npm run clean; gulp",
 		"build": "npm run clean; gulp build",
-		"clean": "rm -rf dist/*"
+		"clean": "rm -rf public/*.{js,css}"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.17.10",
@@ -40,6 +40,7 @@
 		"gulp": "^4.0.2",
 		"gulp-babel": "^8.0.0",
 		"gulp-concat": "^2.6.1",
+		"gulp-copy": "^4.0.1",
 		"gulp-hash-filename": "^4.0.0",
 		"gulp-htmlmin": "^5.0.1",
 		"gulp-imagemin": "^8.0.0",

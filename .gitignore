@@ -12,6 +12,8 @@ lerna-debug.log*
 # Project Root: 
 src/scss/
 
+./public/
+
 
 
 
