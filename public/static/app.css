@@ -1,29 +1,45 @@
-/* NORMALIZE & RESET */
 :root {
+  --color-current: currentColor;
+  --color-alpha: transparent;
+  --color-none: none;
   --indigo: #3d14b8;
-  --salmon: #f66e55;
-  --teal: #12a5a5;
-  --persian: #031330;
-  --success: #14b866;
-  --danger: #dc1829;
-  --warning: #e2b912;
-  --info: #1481b8;
-  --gray-100: #c9c7d1;
-  --gray-200: #abb0ba;
-  --gray-300: #5c6670;
-  --gray-400: #312e38;
-  --theme-light: #f5f5f5;
-  --theme-dark: #16161d;
+  --salmon: #ff6347;
+  --teal: #0e8181;
+  --persian: #071f40;
+  --success: #18dc7a;
+  --danger: #e6192a;
+  --warning: #f2d40d;
+  --info: #1991e6;
+  --gray100: #d7d6dc;
+  --gray200: #9da4af;
+  --gray300: #878a92;
+  --gray400: #3e3b45;
+  --themeLight: #f0f0f0;
+  --themeDark: #1c1c22;
+  --fz-base: 62.5%;
+  --fz-sm: 1.6rem;
+  --fz-md: 2.4rem;
+  --fz-lg: 3.2rem;
+  --fz-xl: 4.8rem;
+  --fz-2xl: 6.4rem;
+  --fz-3xl: 7.2rem;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
+/* HTML & BODY ROOT NODES */
+html, body {
+  all: unset;
+  border: none;
+  box-sizing: border-box;
   font-family: sans-serif;
   font-size: 62.5%;
   font-weight: 300;
-  box-sizing: border-box;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+  font-size-adjust: 0.58;
 }
 
 *::after,
@@ -34,10 +50,33 @@ body {
 
 body {
   font-size: 1.6rem;
-  padding: 1.8rem 2rem;
-  background-color: var(--theme-light);
+  padding: 2rem;
+  background-color: var(--warning);
   color: var(--theme-dark);
   min-height: 100vh;
+  position: relative;
+}
+
+/* ANCHOR LINKS */
+/* HEADINGS  & PARAGRAPHS */
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-size: var(--fz-xl);
+}
+
+h2 {
+  font-size: var(--fz-lg);
+  font-weight: 900;
+}
+
+h3 {
+  font-size: var(--fz-md);
+  font-weight: 600;
 }
 
 /* UTILITIES CLASSES  */
