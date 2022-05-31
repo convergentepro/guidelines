@@ -1,25 +1,22 @@
-@use "sass:math";
-
-//----------------------------------------------------------------
-// ? LAYOUTS UTILS:
+@use 'sass:math';
 
 // * Layout Displays:
-@mixin createDisplay($bp: "") {
+@mixin createDisplay($bp: '') {
 	$displays: (
-		"inline": inline,
-		"inblock": inline-block,
-		"block": block,
-		"flex": flex,
-		"inflex": inline-flex,
-		"grid": grid,
-		"ingrid": inline-grid,
-		"none": none,
-		"table": table,
+		'inline': inline,
+		'inblock': inline-block,
+		'block': block,
+		'flex': flex,
+		'inflex': inline-flex,
+		'grid': grid,
+		'ingrid': inline-grid,
+		'none': none,
+		'table': table,
 	);
 
 	@if $classes == true {
 		@each $k, $v in $displays {
-			@if $bp== "" {
+			@if $bp== '' {
 				.d-#{$k} {
 					display: #{$v};
 				}
@@ -72,28 +69,28 @@
 // }
 
 // * FLEXBOX: ALIGNMENTS: items and justify
-@mixin createFlexAlignments($bp: "") {
+@mixin createFlexAlignments($bp: '') {
 	$alignItems: (
-		"start": flex-start,
-		"end": flex-end,
-		"center": center,
-		"baseline": baseline,
-		"stretch": stretch,
+		'start': flex-start,
+		'end': flex-end,
+		'center': center,
+		'baseline': baseline,
+		'stretch': stretch,
 	);
 
 	$justifyContent: (
-		"start": flex-start,
-		"end": flex-end,
-		"center": center,
-		"around": space-around,
-		"between": space-between,
-		"evenly": space-evenly,
+		'start': flex-start,
+		'end': flex-end,
+		'center': center,
+		'around': space-around,
+		'between': space-between,
+		'evenly': space-evenly,
 	);
 
 	@if $classes == true {
 		@if ($items == true) {
 			@each $k, $v in $alignItems {
-				@if ($bp == "") {
+				@if ($bp == '') {
 					.items-#{$k} {
 						align-items: #{$v};
 					}
@@ -107,7 +104,7 @@
 
 		@if ($justify == true) {
 			@each $k, $v in $justifyContent {
-				@if ($bp == "") {
+				@if ($bp == '') {
 					.justify-#{$k} {
 						justify-content: #{$v};
 					}
@@ -122,22 +119,22 @@
 }
 
 // * FLEXBOX: WORKFLOWS: Direction and Wraps
-@mixin createFlexFlows($bp: "") {
+@mixin createFlexFlows($bp: '') {
 	$flexDirections: (
-		"row": row,
-		"row-reverse": row-reverse,
-		"column": column,
-		"column-reverse": column-reverse,
+		'row': row,
+		'row-reverse': row-reverse,
+		'column': column,
+		'column-reverse': column-reverse,
 	);
 
 	$flexWraps: (
-		"wrap": wrap,
-		"wrap-reverse": wrap-reverse,
-		"nowrap": nowrap,
+		'wrap': wrap,
+		'wrap-reverse': wrap-reverse,
+		'nowrap': nowrap,
 	);
 
 	@if ($classes == true) {
-		@if ($bp == "") {
+		@if ($bp == '') {
 			@each $k, $v in $flexDirections {
 				.flex-#{$k} {
 					flex-direction: #{$v};
@@ -166,9 +163,9 @@
 }
 
 // * FLEXBOX ORDERING:
-@mixin createFlexOrdering($bp: "", $negative: true) {
+@mixin createFlexOrdering($bp: '', $negative: true) {
 	@if ($classes == true) {
-		@if ($bp == "") {
+		@if ($bp == '') {
 			@for $i from 1 through 10 {
 				@if ($negative == true) {
 					.order_#{$i} {
@@ -197,10 +194,10 @@
 }
 
 // * FLEXBOX: COLUMN GRID SYSTEM:
-@mixin createFlexColumnsGrid($bp: "", $columns, $gutter) {
+@mixin createFlexColumnsGrid($bp: '', $columns, $gutter) {
 	@if ($classes == true) {
 		@for $i from 1 through $columns {
-			@if ($bp == "") {
+			@if ($bp == '') {
 				.flex-col-#{$i} {
 					flex: 0 0 #{math.div($i, $columns) * 100%};
 					max-width: #{math.div($i, $columns) * 100%};
@@ -223,9 +220,9 @@
 // ? GRIDBOX UTILS:
 
 // * GRID TEMPLATE PROPS: Columns, Rows and Auto Cols & Rows
-@mixin createGridTemplates($bp: "") {
+@mixin createGridTemplates($bp: '') {
 	@if ($classes == true) {
-		@if ($bp == "") {
+		@if ($bp == '') {
 			@for $i from 1 through 12 {
 				.grid-cols-#{$i} {
 					grid-template-columns: repeat($i, minmax(auto, 1fr));
@@ -264,9 +261,9 @@
 }
 
 // * GRID SPREADING PROPS: Start and End Cols and Rows:
-@mixin createGridSpans($bp: "") {
+@mixin createGridSpans($bp: '') {
 	@if ($classes == true) {
-		@if ($bp == "") {
+		@if ($bp == '') {
 			@for $i from 1 through 12 {
 				.grid-colstart-#{$i} {
 					grid-column-start: #{$i};
@@ -307,9 +304,9 @@
 }
 
 // * GRID GAPS MEASURES: Cols and Rows Gutter:
-@mixin createGridGutters($bp: "") {
+@mixin createGridGutters($bp: '') {
 	@if ($class == true) {
-		@if ($bp == "") {
+		@if ($bp == '') {
 			@for $i from 1 through 100 {
 				.gap-col-#{$i} {
 					column-gap: #{$i * 1px};
@@ -335,15 +332,15 @@
 // ? THEMES UTILS:
 
 // * FONT FAMILIES UTILS:
-@mixin createFontFamilies($bp: "") {
+@mixin createFontFamilies($bp: '') {
 	$font-families: (
-		"display": '"Jost", sans-serif',
-		"serif": '"Lora", serif',
-		"code": '"Source Code Pro", monospace',
+		'display': '"Jost", sans-serif',
+		'serif': '"Lora", serif',
+		'code': '"Source Code Pro", monospace',
 	);
 
 	@if ($classes == true) {
-		@if ($bp == "") {
+		@if ($bp == '') {
 			@each $k, $family in $font-families {
 				.ff-#{$k} {
 					font-family: #{$family};
@@ -360,10 +357,10 @@
 }
 
 // * FONT SIZES MEASURES:
-@mixin createFontSizes($bp: "") {
+@mixin createFontSizes($bp: '') {
 	@if ($classes == true) {
 		@for $size from 0 through 72 {
-			@if ($bp == "") {
+			@if ($bp == '') {
 				.fz-#{$size} {
 					font-size: #{$size * 0.5 * 0.2 * 1rem};
 				}
@@ -377,10 +374,10 @@
 }
 
 // * FONT WEIGHT MEASURES:
-@mixin createFontWeights($bp: "") {
+@mixin createFontWeights($bp: '') {
 	@if ($classes == true) {
 		@for $i from 1 to 10 {
-			@if ($bp == "") {
+			@if ($bp == '') {
 				.fw-#{$i * 100} {
 					font-weight: #{$i * 100};
 				}
@@ -394,23 +391,23 @@
 }
 
 // * LINEHEIGHTS MEASURES:
-@mixin createLineheights($bp: "") {
+@mixin createLineheights($bp: '') {
 	$line-heights: (
-		"none": 0,
-		"100": 1,
-		"133": 1.33,
-		"155": 1.55,
-		"177": 1.77,
-		"200": 2,
-		"233": 2.33,
-		"255": 2.55,
-		"277": 2.77,
-		"300": 3,
+		'none': 0,
+		'100': 1,
+		'133': 1.33,
+		'155': 1.55,
+		'177': 1.77,
+		'200': 2,
+		'233': 2.33,
+		'255': 2.55,
+		'277': 2.77,
+		'300': 3,
 	);
 
 	@if ($classes == true) {
 		@each $k, $v in $line-heights {
-			@if ($bp == "") {
+			@if ($bp == '') {
 				.lh-#{$k} {
 					line-height: #{$v};
 				}
@@ -424,42 +421,42 @@
 }
 
 // * TEXT PROPS AND LIST STYLES:
-@mixin createTextProps($bp: "") {
+@mixin createTextProps($bp: '') {
 	$text-aligns: (
-		"left": left,
-		"center": center,
-		"right": right,
-		"justify": justify,
-		"none": none,
+		'left': left,
+		'center': center,
+		'right': right,
+		'justify': justify,
+		'none': none,
 	);
 	$text-decorations: (
-		"none": none,
-		"underline": underline,
-		"overline": overline,
-		"line-through": line-through,
+		'none': none,
+		'underline': underline,
+		'overline': overline,
+		'line-through': line-through,
 	);
 	$text-transforms: (
-		"none": none,
-		"uppercase": uppercase,
-		"lowercase": lowercase,
-		"capitalize": capitalize,
+		'none': none,
+		'uppercase': uppercase,
+		'lowercase': lowercase,
+		'capitalize': capitalize,
 	);
 	$list-styles: (
-		"none": none,
-		"circle": circle,
-		"decimal": decimal,
-		"decimal-zero": decimal-leading-zero,
-		"upper-alpha": upper-alpha,
-		"lower-alpha": lower-alpha,
-		"upper-roman": upper-alpha,
-		"lower-roman": lower-alpha,
-		"square": square,
+		'none': none,
+		'circle': circle,
+		'decimal': decimal,
+		'decimal-zero': decimal-leading-zero,
+		'upper-alpha': upper-alpha,
+		'lower-alpha': lower-alpha,
+		'upper-roman': upper-alpha,
+		'lower-roman': lower-alpha,
+		'square': square,
 	);
 
 	@if ($classes == true) {
 		@each $k, $v in $text-aligns {
-			@if ($bp == "") {
-				@if ($k == "none") {
+			@if ($bp == '') {
+				@if ($k == 'none') {
 					.ta-none {
 						text-align: none;
 					}
@@ -469,7 +466,7 @@
 					}
 				}
 			} @else {
-				@if ($k == "none") {
+				@if ($k == 'none') {
 					.ta-#{$bp}-none {
 						text-align: none;
 					}
@@ -482,8 +479,8 @@
 		}
 
 		@each $k, $v in $text-decorations {
-			@if ($bp == "") {
-				@if ($k == "none") {
+			@if ($bp == '') {
+				@if ($k == 'none') {
 					.tde-none {
 						text-decoration: none;
 					}
@@ -493,7 +490,7 @@
 					}
 				}
 			} @else {
-				@if ($k == "none") {
+				@if ($k == 'none') {
 					.tde-#{$bp}-none {
 						text-decoration: none;
 					}
@@ -506,8 +503,8 @@
 		}
 
 		@each $k, $v in $text-transforms {
-			@if ($bp == "") {
-				@if ($k == "none") {
+			@if ($bp == '') {
+				@if ($k == 'none') {
 					.ttr-none {
 						text-transform: none;
 					}
@@ -517,7 +514,7 @@
 					}
 				}
 			} @else {
-				@if ($k == "none") {
+				@if ($k == 'none') {
 					.ttr-#{$bp}-none {
 						text-transform: none;
 					}
@@ -530,8 +527,8 @@
 		}
 
 		@each $k, $v in $list-styles {
-			@if ($bp == "") {
-				@if ($k == "none") {
+			@if ($bp == '') {
+				@if ($k == 'none') {
 					.list-style-none {
 						list-style: none;
 					}
@@ -541,7 +538,7 @@
 					}
 				}
 			} @else {
-				@if ($k == "none") {
+				@if ($k == 'none') {
 					.list-style-#{$bp}-none {
 						list-style: none;
 					}
@@ -556,29 +553,29 @@
 }
 
 // * BRAND COLORS: BkgColor, TextColor and HoverColors:
-@mixin createThemeColors($bp: "") {
+@mixin createThemeColors($bp: '') {
 	$brandColors: (
-		"current": currentColor,
-		"alpha": transparent,
-		"none": none,
-		"indigo": #3d14b8,
-		"salmon": #ff6347,
-		"teal": #0e8181,
-		"persian": #071f40,
-		"success": #18dc7a,
-		"danger": #e6192a,
-		"warning": #f2d40d,
-		"info": #1991e6,
-		"gray100": #d7d6dc,
-		"gray200": #9da4af,
-		"gray300": #878a92,
-		"gray400": #3e3b45,
-		"light": #f0f0f0,
-		"dark": #1c1c22,
+		'current': currentColor,
+		'alpha': transparent,
+		'none': none,
+		'indigo': #3d14b8,
+		'salmon': #ff6347,
+		'teal': #0e8181,
+		'persian': #071f40,
+		'success': #18dc7a,
+		'danger': #e6192a,
+		'warning': #f2d40d,
+		'info': #1991e6,
+		'gray100': #d7d6dc,
+		'gray200': #9da4af,
+		'gray300': #878a92,
+		'gray400': #3e3b45,
+		'light': #f0f0f0,
+		'dark': #1c1c22,
 	);
 
 	@if ($classes == true) {
-		@if ($bp == "") {
+		@if ($bp == '') {
 			@each $k, $v in $brandColors {
 				.bg-#{$k} {
 					background-color: #{$v};
