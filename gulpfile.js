@@ -64,11 +64,9 @@ function server() {
 	init({
 		server: {
 			baseDir: './public',
-			// index: 'index.html',
+			index: 'index.html',
 		},
 		injectChanges: true,
-		ghostMode: true,
-		browser: 'brave browser',
 		watch: true,
 		watchOptions: {
 			depth: 1,
@@ -91,4 +89,4 @@ function watching() {
 
 // ? Exports:
 exports.serve = server
-exports.default = series(parallel(compilecss, compilets), watching)
+exports.default = series(parallel(compilecss, compilets), server, watching)
