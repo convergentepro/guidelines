@@ -10,9 +10,9 @@ yarn-error.log*
 lerna-debug.log*
 
 # Project Root: 
-src/scss/
+# src/scss/
 
-./public/
+public/
 
 
 
