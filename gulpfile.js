@@ -1,22 +1,24 @@
-const { series, src, dest, watch, parallel } = require('gulp')
-const sass = require('gulp-sass')(require('sass'))
-const postcss = require('gulp-postcss')
-const prefixer = require('autoprefixer')
-const plumber = require('gulp-plumber')
-const { stream, reload, init } = require('browser-sync').create()
+// From local repository to remote repository:
+
 const babel = require('gulp-babel')
-const sourcemaps = require('gulp-sourcemaps')
-const terser = require('gulp-terser')
 const concat = require('gulp-concat')
-const tscript = require('gulp-typescript')
-const { nanoid } = require('nanoid')
 const cssnano = require('cssnano')
 const path = require('path')
+const plumber = require('gulp-plumber')
+const postcss = require('gulp-postcss')
+const prefixer = require('autoprefixer')
+const sass = require('gulp-sass')(require('sass'))
+const sourcemaps = require('gulp-sourcemaps')
+const terser = require('gulp-terser')
+const tscript = require('gulp-typescript')
+const { nanoid } = require('nanoid')
+const { series, src, dest, watch, parallel } = require('gulp')
+const { stream, reload, init } = require('browser-sync').create()
 
-// ? Settings:
-const hasher = nanoid().replace('-,_', '')
+// * Create a chunkHash to namespace or filenames:
+const hasher = nanoid().replace('-,_,.', '')
 
-// CSS and SCSS in Development Mode:
+// * Working with SCSS and CSS in Development Mode:
 function compilecss() {
 	return src('./src/scss/*.scss')
 		.pipe(plumber())
@@ -33,16 +35,7 @@ function compilets() {
 	return src('./src/index.ts')
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
-		.pipe(
-			tscript({
-				target: 'es5',
-				module: 'es6',
-				moduleResolution: 'node',
-				sourceMap: true,
-				outDir: './public',
-				isolatedModules: true,
-			})
-		)
+		.pipe(tscript())
 		.pipe(
 			babel({
 				presets: ['@babel/preset-env'],
@@ -56,10 +49,11 @@ function compilets() {
 			})
 		)
 		.pipe(sourcemaps.write())
-		.pipe(dest('./public/static', { overwrite: true }))
+		.pipe(dest('./public/assets', { overwrite: true }))
 		.pipe(stream())
 }
 
+// * Running Up Server with BrowserSync + Watcher:
 function server() {
 	init({
 		server: {
@@ -80,13 +74,13 @@ function server() {
 	})
 }
 
-// Watcher Gulp Task
+// * Watching Files with Gulp Watch:
 function watching() {
 	watch('./src/scss/**/*.scss', compilecss)
 	watch(['./src/*.ts'], compilets).on('change', reload)
 	watch('./public/*.html').on('change', reload)
 }
 
-// ? Exports:
+// * Exports:
 exports.serve = server
 exports.default = series(parallel(compilecss, compilets), server, watching)
