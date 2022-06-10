@@ -23,6 +23,7 @@
 		"@babel/preset-env": "^7.18.2",
 		"@babel/register": "^7.17.7",
 		"@babel/runtime": "^7.18.3",
+		"@sveltejs/vite-plugin-svelte": "1.0.0-next.49",
 		"@typescript-eslint/eslint-plugin": "^5.27.1",
 		"@typescript-eslint/parser": "^5.27.1",
 		"autoprefixer": "^10.4.7",
