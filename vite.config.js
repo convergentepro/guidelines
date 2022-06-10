@@ -1,20 +1,10 @@
-import { svelte } from '@sveltejs/vite-plugin-svelte';
-import autoPreprocess from 'svelte-preprocess';
+// import { svelte } from '@sveltejs/vite-plugin-svelte';
+// import autoPreprocess from 'svelte-preprocess';
 import { defineConfig } from 'vite';
 
-// https://vitejs.dev/config/ Working with Typescript + Svelte.js
+// https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [
-		svelte({
-			preprocess: autoPreprocess({
-				typescript: true,
-				scss: true,
-				postcss: true,
-				sass: true,
-				sourceMap: true,
-				babel: true,
-			}),
-		}),
 	],
 	build: {
 		outDir: './dist',
@@ -23,30 +13,17 @@ export default defineConfig({
 		assetsDir: 'assets',
 		cssCodeSplit: true,
 		chunkSizeWarningLimit: 1000000,
-		rollupOptions: {
-			external: ['svelte'],
-			input: {
-			  main: resolve(__dirname, 'index.html'),
-			  nested: resolve(__dirname, 'nested/index.html')
-			}
-		 }
-	},
-	css: {
-		preprocessorOptions: {
-			scss: {
-				includePaths: ['/src/scss/**/*.scss'],
-				exclude: ['node_modules'],
-			},
-			typescript: {
-				transpileOnly: true,
-			},
-		},
 	},
 
+	preview: {
+		port: 5000,
+		cors: true,
+		open: false
+	},
+	logLevel: 'info',
+	base: '/',
 	server: {
-		port: 3000,
-		host: 'localhost',
-		base: './src',
+		port: 8000,
 		hmr: true,
 		open: true,
 	},

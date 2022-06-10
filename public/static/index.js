@@ -1,4 +1,0 @@
-"use strict";
-
-console.log("Typescript with Gulpfile Task Runner!");
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sIm5hbWVzIjpbImNvbnNvbGUiLCJsb2ciXSwibWFwcGluZ3MiOiI7O0FBQUFBLE9BQU8sQ0FBQ0MsR0FBUixDQUFZLHVDQUFaIiwiZmlsZSI6ImluZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiY29uc29sZS5sb2coXCJUeXBlc2NyaXB0IHdpdGggR3VscGZpbGUgVGFzayBSdW5uZXIhXCIpO1xuIl19

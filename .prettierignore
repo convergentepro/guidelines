@@ -1,0 +1,7 @@
+# Ignore artifacts:
+
+# Ignore all HTML files:
+dist/
+package-lock.json
+# *.html
+# src/scss/*.scss

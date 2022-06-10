@@ -1,1 +1,1 @@
-console.log("Typescript with Gulpfile Task Runner!");
+console.log("Typescript Vite.js");
