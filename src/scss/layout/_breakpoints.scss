@@ -1,12 +1,4 @@
 // Breakpoints Array:
-$breakpoints: (
-   "xs": 360px,
-   "sm": 560px,
-   "md": 768px,
-   "lg": 1080px,
-   "xl": 1200px,
-   "xxl": 1366px,
-);
 
 @mixin mq-up($device: "") {
    @if ($device == "xs") {

@@ -72,10 +72,4 @@
    }
 }
 
-/* Set Flexbox Grid Columns */
-@include setFlexibleColumnsGrid(false);
-@include setFlexibleColumnsGrid(true);
 
-/* Set Gutters Measures within Flexbox and Grid */
-@include setGridFlexGaps(false);
-@include setGridFlexGaps(true);

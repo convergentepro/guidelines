@@ -74,14 +74,4 @@
    }
 }
 
-/* Typography Font Families */
-@include setFontFamilies();
-@include setFontFamilies(true);
 
-/* Typography Font Weights */
-@include setFontweights();
-@include setFontweights(true);
-
-/* Typography Line Heights */
-@include setLineHeights();
-@include setLineHeights(true);

@@ -39,12 +39,12 @@ $fontFamilies: (
 );
 // Breakpoints MQ:
 $breakpoints: (
-	"xs": 0,
-	"sm": 576px,
+	"xs": 360px,
+	"sm": 560px,
 	"md": 768px,
-	"lg": 1024px,
-	"xl": 1280px,
-	"xxl": 1440px,
+	"lg": 1080px,
+	"xl": 1200px,
+	"xxl": 1366px,
 );
 
 $displays: (
