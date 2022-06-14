@@ -1,0 +1,81 @@
+@use "sass:math";
+
+// ** Set Flexbox Grid Column System:
+@mixin setFlexibleColumnsGrid($bp: false) {
+   @if ($enableClasses ==true) {
+      @if ($bp == false) {
+         @for $i from 0 through $gridColumns {
+            .cols-#{$i} {
+               flex: 0 0 #{math.div($i, $gridColumns) * 100%};
+               max-width: #{math.div($i, $gridColumns) * 100%};
+               padding-left: #{$gridGutterBase};
+               padding-right: #{$gridGutterBase};
+            }
+         }
+      }
+
+      @if ($bp == true) {
+         @each $device, $v in $breakpoints {
+            @include mq-up($device) {
+               @for $i from 0 through $gridColumns {
+                  .cols-#{$i}--#{$device} {
+                     flex: 0 0 #{math.div($i, $gridColumns) * 100%};
+                     max-width: #{math.div($i, $gridColumns) * 100%};
+                     padding-left: #{$gridGutterBase};
+                     padding-right: #{$gridGutterBase};
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+// ** Set Gutters with Flexbox and Grid:
+@mixin setGridFlexGaps($bp: false) {
+   @if ($enableClasses ==true) {
+      @if ($bp == false) {
+         @for $i from 0 through 10 {
+            .column-gap-#{$i} {
+               column-gap: #{$i * 0.5 * 0.2 * 1rem};
+            }
+
+            .row-gap-#{$i} {
+               row-gap: #{$i * 0.5 * 0.2 * 1rem};
+            }
+
+            .gutter-#{$i} {
+               gap: #{$i * 0.5 * 0.2 * 1rem};
+            }
+         }
+      }
+
+      @if ($bp == true) {
+         @each $device, $v in $breakpoints {
+            @include mq-up($device) {
+               @for $i from 0 through 10 {
+                  .column-gap-#{$i}-#{$device} {
+                     column-gap: #{$i * 0.5 * 0.2 * 1rem};
+                  }
+
+                  .row-gap-#{$i}-#{$device} {
+                     row-gap: #{$i * 0.5 * 0.2 * 1rem};
+                  }
+
+                  .gutter-#{$i}-#{$device} {
+                     gap: #{$i * 0.5 * 0.2 * 1rem};
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+/* Set Flexbox Grid Columns */
+@include setFlexibleColumnsGrid(false);
+@include setFlexibleColumnsGrid(true);
+
+/* Set Gutters Measures within Flexbox and Grid */
+@include setGridFlexGaps(false);
+@include setGridFlexGaps(true);

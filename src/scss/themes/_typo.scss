@@ -1,18 +1,9 @@
-// ** Local Variables Maps:
-$textAligns: (left, center, right, justify);
-$textDecorations: (underline, line-through, overline);
-$textTransforms: (uppercase, lowercase, capitalize);
-$fontFamilies: (
-   "display": " 'Open Sans', sans-serif",
-   "monospace": " 'Source Code Pro', monospace",
-);
-
 // ** Set Font Families Classes:
 @mixin setFontFamilies($bp: false) {
-   @if $enableClasses ==true {
+   @if ($enableClasses == true) {
       @if ($bp == false) {
          @each $k, $v in $fontFamilies {
-            .family-#{$k} {
+            .font-#{$k} {
                font-family: #{$v};
             }
          }
@@ -21,8 +12,32 @@ $fontFamilies: (
          @each $device, $v in $breakpoints {
             @include mq-up($device) {
                @each $k, $v in $fontFamilies {
-                  .family-#{$k}-#{$device} {
+                  .font-#{$k}-#{$device} {
                      font-family: #{$v};
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+// ** Set Font weights Classes:
+@mixin setFontweights($bp: false) {
+   @if ($enableClasses == true) {
+      @if ($bp == false) {
+         @for $i from 1 through 9 {
+            .fw-#{$i * 100} {
+               font-weight: #{$i * 100};
+            }
+         }
+      }
+      @if ($bp == true) {
+         @each $device, $v in $breakpoints {
+            @include mq-up($device) {
+               @for $i from 1 through 9 {
+                  .fw-#{$i}-#{$device} {
+                     font-weight: #{$i};
                   }
                }
             }
@@ -58,3 +73,15 @@ $fontFamilies: (
       }
    }
 }
+
+/* Typography Font Families */
+@include setFontFamilies();
+@include setFontFamilies(true);
+
+/* Typography Font Weights */
+@include setFontweights();
+@include setFontweights(true);
+
+/* Typography Line Heights */
+@include setLineHeights();
+@include setLineHeights(true);

@@ -1,11 +1,26 @@
 // import { svelte } from '@sveltejs/vite-plugin-svelte';
 // import autoPreprocess from 'svelte-preprocess';
-import { defineConfig } from 'vite'
+import purgecssPlugin from '@fullhuman/postcss-purgecss';
 
+
+import { defineConfig } from 'vite';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+
   ],
+  css: {
+    postcss: {
+      from: 'src/css/index.css',
+      to: 'src/css/index.min.css',
+      plugins: [
+        purgecssPlugin( {
+                     content: ['**/*.html'],
+          safelist: ['body', 'html', '*'],
+         })
+      ]
+    }
+  },
   build: {
     outDir: './dist',
     emptyOutDir: true,

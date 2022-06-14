@@ -1,0 +1,128 @@
+// Import Google Fonts:
+
+// ** GLOBALS VARIABLES:
+$enableClasses: true !default;
+$gridColumns: 12 !default;
+$gridGutterBase: 1rem !default;
+$fontFamilyDisplay: "Poppins", sans-serif;
+$fontFamilyCode: "Source Code Pro", monospace;
+
+//----------------------------------------------------------------
+// ? THEMES UTILITIES & VARIABLES:
+$current: currentColor;
+$alpha: transparent;
+$colorless: none;
+$indigo: #4d19e6;
+$orange: #e65e19;
+$teal: #31c487;
+$success: #31c449;
+$danger: #d02541;
+$warning: #e9c40c;
+$info: #25a5d0;
+$gray-100: #f5f5f5;
+$gray-200: #c7ccd1;
+$gray-300: #abb3ba;
+$gray-400: #8f99a3;
+$gray-500: #73808c;
+$gray-600: #5c6670;
+$gray-700: #454d54;
+$gray-800: #2e3338;
+$gray-900: #1b1818;
+
+// ** Local Variables Maps:
+$textAligns: (left, center, right, justify);
+$textDecorations: (underline, line-through, overline);
+$textTransforms: (uppercase, lowercase, capitalize);
+$fontFamilies: (
+	"display": $fontFamilyDisplay,
+	"code": $fontFamilyCode,
+);
+// Breakpoints MQ:
+$breakpoints: (
+	"xs": 0,
+	"sm": 576px,
+	"md": 768px,
+	"lg": 1024px,
+	"xl": 1280px,
+	"xxl": 1440px,
+);
+
+$displays: (
+	"d-block": block,
+	"d-flex": flex,
+	"d-grid": grid,
+	"d-inblock": inline-block,
+	"d-inflex": inline-flex,
+	"d-ingrid": inline-grid,
+	"d-inline": inline,
+	"d-none": none,
+	"d-subgrid": subgrid,
+	"d-webox": --webkit-box,
+);
+// * Flex Direction: flex align items:
+$alignItems: (
+	"start": start,
+	"end": end,
+	"center": center,
+	"stretch": stretch,
+	"base": baseline,
+);
+
+// * Flex Direction: flex justify content:
+$justifyContent: (
+	"start": flex-start,
+	"end": flex-end,
+	"center": center,
+	"between": space-between,
+	"around": space-around,
+	"evenly": space-evenly,
+);
+
+// ** Flex Directions:
+$flexDirections: (
+	"row": row,
+	"column": column,
+	"rowrev": row-reverse,
+	"columnrev": column-reverse,
+);
+
+// ** Flex Wraps:
+$flexWraps: (
+	"wrap": wrap,
+	"wraprev": wrap-reverse,
+	"nowrap": nowrap,
+);
+$positions: (relative, absolute, sticky, fixed, static);
+$ratiosMap: (
+	"1-1": "1/1",
+	"16-9": "16/9",
+	"9-16": "9/16",
+	"2-3": "2/3",
+	"3-2": "3/2",
+	"4-3": "4/3",
+	"3-4": "3/4",
+	"5-4": "5/4",
+	"4-5": "4/5",
+);
+
+$radiusMap: (
+	"none": 0,
+	"8": 0.8rem,
+	"10": 1rem,
+	"12": 1.2rem,
+	"16": 1.6rem,
+	"20": 2rem,
+	"24": 2.4rem,
+	"28": 2.8rem,
+	"32": 3.2rem,
+	"48": 4.8rem,
+	"full": 50%,
+	"screen": 100%,
+);
+
+// Utilities: Effects CSS:
+$cursorsMap: (none, pointer, copy, not-allowed, progress, help, zoom-in, zoom-out);
+$objectFitMap: (auto, cover, contain);
+$resizesMap: (vertical, horizontal, both);
+$overflows: (visible, hidden, scroll, auto, clip);
+$visibilityMap: (visible, hidden, collapse);

@@ -1,0 +1,25 @@
+@mixin setDisplays($bp: false) {
+   @if ($enableClasses == true) {
+      @if ($bp == false) {
+         @each $k, $v in $displays {
+            .#{$k} {
+               display: #{$v};
+            }
+         }
+      } @else if ($bp == true) {
+         @each $device, $v in $breakpoints {
+            @include mq-up($device) {
+               @each $k, $v in $displays {
+                  .#{$k}-#{$device} {
+                     display: #{$v};
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+/* Set Display Boxmodels */
+@include setDisplays(false);
+@include setDisplays(true);

@@ -1,5 +1,6 @@
-@import "config";
-@import "base";
-@import "reset";
+@import "variables";
+@import "mixins";
+@import "normalize";
 @import "layout";
-@import "helpers.scss";
+@import "themes";
+@import "utilities";

@@ -1,1 +1,1 @@
-console.log('Typescript Vite.js')
+console.log('Guidelines with Tscript')
