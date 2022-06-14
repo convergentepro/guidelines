@@ -1,1 +1,1 @@
-console.log("Typescript Vite.js");
+console.log('Typescript Vite.js')

@@ -1,21 +1,19 @@
 {
-    "presets": [
-        [
-            "@babel/preset-env",
-            {
-                "targets": {
-                    "node": "current"
-                }
-            }
-        ]
-      ],
-      
-      "plugins": [
-        "@babel/plugin-transform-runtime",
-        "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-proposal-function-bind",
-        "@babel/plugin-syntax-dynamic-import"
-    ]
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"node": "current"
+				}
+			}
+		]
+	],
+
+	"plugins": [
+		"@babel/plugin-transform-runtime",
+		"@babel/plugin-proposal-class-properties",
+		"@babel/plugin-proposal-function-bind",
+		"@babel/plugin-syntax-dynamic-import"
+	]
 }
-
-

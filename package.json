@@ -11,6 +11,7 @@
 		"build": "vite build -c vite.config.js",
 		"dev": "vite -c vite.config.js",
 		"serve": "vite preview",
+		"sass": "sass -w src/scss/app.scss:src/css/index.css",
 		"format": "prettier --check --write .",
 		"eslint": "eslint --fix . --ext .js,.jsx,.ts,.tsx"
 	},

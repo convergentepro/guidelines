@@ -1,0 +1,65 @@
+// Breakpoints Array:
+$breakpoints: (
+   "xs": 360px,
+   "sm": 560px,
+   "md": 768px,
+   "lg": 1080px,
+   "xl": 1200px,
+   "xxl": 1366px,
+);
+
+@mixin mq-up($device: "") {
+   @if ($device == "xs") {
+      @media screen and (min-width: map-get($breakpoints, #{$device})) {
+         @content;
+      }
+   } @else if ($device == "sm") {
+      @media screen and (min-width: map-get($breakpoints, #{$device})) {
+         @content;
+      }
+   } @else if ($device == "md") {
+      @media screen and (min-width: map-get($breakpoints, #{$device})) {
+         @content;
+      }
+   } @else if ($device == "lg") {
+      @media screen and (min-width: map-get($breakpoints, #{$device})) {
+         @content;
+      }
+   } @else if ($device == "xl") {
+      @media screen and (min-width: map-get($breakpoints, #{$device})) {
+         @content;
+      }
+   } @else {
+      @media screen and (min-width: map-get($breakpoints, #{$device})) {
+         @content;
+      }
+   }
+}
+
+@mixin mq-down($device: "") {
+   @if ($device == "xs") {
+      @media screen and (max-width: map-get($breakpoints, #{$device})) {
+         @content;
+      }
+   } @else if ($device == "sm") {
+      @media screen and (max-width: map-get($breakpoints, #{$device})) {
+         @content;
+      }
+   } @else if ($device == "md") {
+      @media screen and (max-width: map-get($breakpoints, #{$device})) {
+         @content;
+      }
+   } @else if ($device == "lg") {
+      @media screen and (max-width: map-get($breakpoints, #{$device})) {
+         @content;
+      }
+   } @else if ($device == "xl") {
+      @media screen and (max-width: map-get($breakpoints, #{$device})) {
+         @content;
+      }
+   } @else {
+      @media screen and (max-width: map-get($breakpoints, "xxl")) {
+         @content;
+      }
+   }
+}
