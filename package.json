@@ -11,9 +11,7 @@
 		"build": "vite build -c vite.config.js",
 		"dev": "vite -c vite.config.js",
 		"serve": "vite preview",
-		"sass": "rm -rf src/css/*.css; sass -w src/scss/app.scss:src/css/index.css",
-		"postcss": "postcss -c postcss.config.js -w --verbose ./src/css/index.css -o ./src/css/index.min.css",
-		"build:css": "concurrently --kill-others \"npm run sass\" \"npm run postcss\"",
+		"sass": "sass -w src/scss/app.scss:src/css/index.css",
 		"format": "prettier --check --write .",
 		"eslint": "eslint --fix . --ext .js,.jsx,.ts,.tsx"
 	},
