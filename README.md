@@ -4,6 +4,10 @@ These are my guidelines API to create my documentation of Convergente.pro Profes
 
 ---
 
+## Steps to Working: 
+
+
+
 ## Referencies Inspirations:
 
 -   [https://milligram.io](https://milligram.io/)
@@ -12,7 +16,3 @@ These are my guidelines API to create my documentation of Convergente.pro Profes
 -   [https://picnicss.com/](https://picnicss.com/)
 -   [https://semantic-ui.com/](https://semantic-ui.com/)
 
-
----
-
-Add BitBucket Sync imported from GitHub Repository
