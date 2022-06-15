@@ -7,7 +7,7 @@ These are my guidelines API to create my documentation of Convergente.pro Profes
 ## Steps to Working: 
 
 - Download and check [Sublime Merge](https://www.sublimemerge.com/) as GUI Git. 
-
+- Download and check [GitBlade](https://www.gitblade.com/) as GUI Git.
 
 ## Referencies Inspirations:
 
