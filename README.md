@@ -8,8 +8,6 @@ These are my guidelines API to create my documentation of Convergente.pro Profes
 
 <<<<<<< HEAD
 - Download and check [Sublime Merge](https://www.sublimemerge.com/) as GUI Git. 
-=======
->>>>>>> UPDATED: Add GitBlade bullet on README.md
 - Download and check [GitBlade](https://www.gitblade.com/) as GUI Git.
 
 ## Referencies Inspirations:
@@ -19,4 +17,3 @@ These are my guidelines API to create my documentation of Convergente.pro Profes
 -   [https://purecss.io/](https://purecss.io/)
 -   [https://picnicss.com/](https://picnicss.com/)
 -   [https://semantic-ui.com/](https://semantic-ui.com/)
-
